@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Aoboshi+One&family=Gugi&family=Noto+Serif+KR:wght@200&display=swap');
+footer {
+    font-family: 'Aoboshi One', serif;
+    font-family: 'Gugi', cursive;
+    font-family: 'Noto Serif KR', serif;
+    background-color: #d9d9d9;
+    height:25vh;
+}
+.text1{
+    position: relative;
+    top: 30%;
+    left: 1%;
+}
+.text2{
+    position: relative;
+    top: 40%; 
+    left:1%;
+}
+.links{
+    text-decoration: none;
+    color: inherit;
+}

@@ -1,0 +1,67 @@
+@import url("https://fonts.googleapis.com/css2?family=Aoboshi+One&family=Gugi&family=Noto+Serif+KR:wght@200&display=swap");
+
+.links {
+  position: relative;
+  color: black;
+  text-decoration: none;
+  margin-right: 21.2px;
+  font-family: "Aoboshi One", serif;
+  font-family: "Gugi", cursive;
+  font-family: "Noto Serif KR", serif;
+  font-size: 20px;
+  white-space: nowrap;
+
+  &:hover {
+    color: #998ff3;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #8c80ff;
+    transform-origin: center;
+    transform: scaleX(0);
+    transition: transform 0.7s ease;
+  }
+
+  &:hover::after {
+    width: 100%;
+    transform: scaleX(1);
+  }
+
+  justify-content: center;
+}
+
+.logo {
+  width: 120px;
+  height: 110.84px;
+  margin-right: 10%;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  margin-left: 0%;
+}
+
+.menu_bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.nav {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  /* 가로 중앙 정렬 */
+  align-items: center;
+  /* 수직 중앙 정렬 */
+}
