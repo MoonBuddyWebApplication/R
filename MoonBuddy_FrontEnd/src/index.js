@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import Mainpage from "./pages/Mainpage";
 import Community from "./pages/Community";
+import Login from "./pages/Login";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
   {
     path: "/com",
     element: <Community />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
   },
 ]);
 

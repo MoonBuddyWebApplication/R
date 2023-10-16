@@ -27,8 +27,8 @@ const Link = styled.a`
 const Navitgator1 = () => {
   return (
     <PurpledStyledNav>
-      <Link href="#">로그인 |</Link>
-      <Link href="#">회원가입 |</Link>
+      <Link href="/login">로그인 |</Link>
+      <Link href="/signup">회원가입 |</Link>
       <Link href="#">마이페이지 |</Link>
       <Link href="#">언어설정</Link>
     </PurpledStyledNav>
