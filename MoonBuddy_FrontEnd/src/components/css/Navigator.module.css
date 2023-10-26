@@ -4,11 +4,11 @@
   position: relative;
   color: black;
   text-decoration: none;
-  margin-right: 21.2px;
+  margin-right: 105px;
   font-family: "Aoboshi One", serif;
   font-family: "Gugi", cursive;
   font-family: "Noto Serif KR", serif;
-  font-size: 20px;
+  font-size: 26px;
   white-space: nowrap;
 
   &:hover {
