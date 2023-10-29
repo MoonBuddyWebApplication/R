@@ -7,6 +7,7 @@ import Community from "./pages/Community";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Analyze from "./pages/Analyze";
+import News from "./pages/News";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
   {
     path: "/analyze",
     element: <Analyze />,
+  },
+  {
+    path: "/news",
+    element: <News />,
   },
 ]);
 

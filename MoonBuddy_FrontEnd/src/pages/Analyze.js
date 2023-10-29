@@ -73,7 +73,7 @@ export default function Analyze() {
       price: "가격5",
       image: "imgs/sample.png",
     },
-    // 추가 제품 데이터를 여기에 계속해서 추가할 수 있습니다.
+    // 추가 데이터 여따가
   ];
 
   return (

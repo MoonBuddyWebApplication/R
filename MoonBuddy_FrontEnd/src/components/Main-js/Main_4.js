@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "../css/main4.module.css";
+import { Link } from "react-router-dom";
 const Main_4 = () => {
   return (
     <div className={styles.container}>
@@ -32,7 +33,15 @@ const Main_4 = () => {
           alignItems: "center",
         }}
       >
-        <a>성분분석 보러가기</a> {/*수정필요 링크!!*/}
+        <Link
+          to="/analyze"
+          style={{
+            textDecoration: "none",
+            cursor: "pointer",
+          }}
+        >
+          성분분석 보러가기
+        </Link>
       </div>
     </div>
   );

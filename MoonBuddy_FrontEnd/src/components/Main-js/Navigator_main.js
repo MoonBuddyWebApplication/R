@@ -17,7 +17,7 @@ const NavigatorMain = () => {
           <Link to="/analyze" className={styles.links}>
             성분분석
           </Link>
-          <Link to="/" className={styles.links}>
+          <Link to="/news" className={styles.links}>
             생리뉴스
           </Link>
           <Link to="/com" className={styles.links}>
