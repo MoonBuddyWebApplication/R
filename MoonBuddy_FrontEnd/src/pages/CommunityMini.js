@@ -23,6 +23,7 @@ export default function CommunityMini({ props }) {
     }
     .title {
       font-size: 40px;
+      font-weight: bold;
     }
     .nickDiv {
       display: flex;
@@ -39,7 +40,9 @@ export default function CommunityMini({ props }) {
     font-size: 24px;
     .sector {
       height: 380px;
+      padding: 20px;
     }
+
     hr {
       color: black;
       margin: 10px 0; /* 원하는 간격으로 조절 */

@@ -9,6 +9,7 @@ import Signup from "./pages/Signup";
 import Analyze from "./pages/Analyze";
 import News from "./pages/News";
 import CommunityMini from "./pages/CommunityMini";
+import NewsDetail from "./pages/NewsDetail";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
   {
     path: "/news",
     element: <News />,
+  },
+  {
+    path: "/newsdetail",
+    element: <NewsDetail />,
   },
   {
     path: "/comchat",

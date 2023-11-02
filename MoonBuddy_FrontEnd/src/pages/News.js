@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import NavigatorMain from "../components/Main-js/Navigator_main";
 import styled from "styled-components";
 export default function News() {
@@ -42,7 +43,7 @@ export default function News() {
       padding: 10px;
     }
   `;
-
+  const gotoDetail = useNavigate();
   const newsData = [
     {
       title: "기사 제목",
@@ -79,7 +80,11 @@ export default function News() {
         <Sector>
           {newsData.map((news, index) => (
             <ImgBox>
-              <img src={news.image} />
+              <img
+                src={news.image}
+                onClick={() => gotoDetail("/newsdetail")}
+                alt="img"
+              />
               <div className="divSector">
                 <div style={{ fontSize: "48px" }}>{news.title}</div>
                 <div style={{ fontSize: "32px", marginTop: "9px" }}>
