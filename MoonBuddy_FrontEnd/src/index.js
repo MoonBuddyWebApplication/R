@@ -8,6 +8,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Analyze from "./pages/Analyze";
 import News from "./pages/News";
+import IngredAnalysis_comp from "./components/IngredientAnalysis-js/IngredAnalysis_comp"
 const router = createBrowserRouter([
   {
     path: "/",
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
   {
     path: "/news",
     element: <News />,
+  },
+  {
+    path: "/analyze/IngredientAnalysis",
+    element: <IngredAnalysis_comp />,
   },
 ]);
 

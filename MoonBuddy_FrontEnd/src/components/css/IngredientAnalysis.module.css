@@ -1,0 +1,116 @@
+@import url("https://fonts.googleapis.com/css2?family=Aoboshi+One&family=Gugi&family=Noto+Serif+KR:wght@200&display=swap");
+
+.container {
+    display: flex;
+    justify-content: space-evenly;
+    font-family: "Aoboshi One", serif;
+    font-family: "Gugi", cursive;
+    font-family: "Noto Serif KR", serif;
+}
+
+.LeftBotton {
+    display: flex;
+    justify-content: space-between;
+}
+
+.LeftBotton p,
+h3 {
+    margin: 0;
+    margin-bottom: 4%;
+}
+
+/* section1 관련 */
+.Section1 {
+    display: flex;
+    align-items: center;
+    
+}
+
+.Section1 .title {
+    display: flex;
+    font-size: 32px;
+}
+
+.brand {
+    font-size: 20px;
+}
+
+.name {
+    font-size: 36px;
+}
+
+.price {
+    font-size: 30px;
+}
+
+/* section2 관련 */
+.Section2 {
+    width: 589px;
+    height: 348px;
+    background-color: antiquewhite;
+}
+
+.Section2 .title {
+    display: flex;
+    font-size: 32px;
+    padding-bottom: 1%;
+    border-bottom: 3px solid;
+}
+
+/* section3 관련 */
+.Section3 {
+    font-size: 14px;
+}
+
+.Section3 .title {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 20px;
+}
+
+.Section3 h4 {
+    margin: 0;
+    font-size: 32px;
+    margin-right: 2%;
+}
+
+.BottomArea_FeatureAndReivew {
+    margin-top: 62px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.TabList {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 0;
+    /* background-color: #ce8826; */
+    width: 100%;
+    /* width: calc(100% /2); */
+    border-bottom: 2px solid #6E00FD;
+}
+
+.TabList::after {
+    border: 2px solid #9bce26;
+    height: 51px;
+    border-bottom: 0;
+    color: #333;
+    padding: 15px px 0 0;
+    background: #fff;
+}
+
+.TabList li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 424px;
+    height: 80px;
+    list-style: none;
+    border: 2px solid #6E00FD;
+    border-bottom: none;
+    font-size: 45px;
+    cursor: pointer;
+}
+
+.Review {}
