@@ -6,12 +6,11 @@ import Main_2 from "../components/Main-js/Main_2";
 import Main_3 from "../components/Main-js/Main_3";
 import Main_4 from "../components/Main-js/Main_4";
 import Footer from "../components/Main-js/Footer";
-import { GetData } from "../components/Api/api";
-// import { login } from "../components/Api/api";
+// import { GetData } from "../components/Api/api";
+
 
 const Mainpage = () => {
-  GetData();
-  // login();
+  // GetData();
   return (
     <div style={{ width: "100%" }}>
       <Navitgator1 />

@@ -1,9 +1,11 @@
+import React from "react";
 import styled from "styled-components";
 import NavigatorMain from "../components/Main-js/Navigator_main";
 import Navitgator1 from "../components/Main-js/Navitgator1";
 import { Link } from "react-router-dom";
-export default function Login() {
-  const IdandPwDiv = styled.div`
+import { login } from "../components/Api/api";
+
+const IdandPwDiv = styled.div`
     @import url("https://fonts.googleapis.com/css2?family=Aoboshi+One&family=Gugi&family=Noto+Serif+KR:wght@200&display=swap");
     font-family: "Aoboshi One", serif;
     font-family: "Gugi", cursive;
@@ -14,12 +16,12 @@ export default function Login() {
     width: 580px;
     height: 800px;
   `;
-  const IdRem = styled.label`
+const IdRem = styled.label`
     display: flex;
     justify-content: space-between;
     margin-top: 41px;
   `;
-  const IdandPwInput = styled.div`
+const IdandPwInput = styled.div`
     border: solid 0.2em;
     background-color: white;
     border-radius: 10px;
@@ -28,14 +30,14 @@ export default function Login() {
     height: 72px;
     margin-top: 4px;
   `;
-  const LoginBtn = styled.button`
+const LoginBtn = styled.button`
     background-color: #c1c0fa;
     border-radius: 10px;
     border: none;
     width: 407px;
     height: 83px;
   `;
-  const Finder = styled.div`
+const Finder = styled.div`
     text-decoration: none;
     align-items: center;
     justify-content: center;
@@ -43,6 +45,24 @@ export default function Login() {
       text-decoration: underline;
     }
   `;
+
+export default function Login() {
+  React.useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await login();
+        console.log("응답 데이터:", response.data);
+        // 로그인 성공 후 필요한 작업 수행
+      } catch (error) {
+        // 에러 처리
+        // console.error("로그인 실패:", error);
+        console.error("에러 발생:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <div>
       <Navitgator1 />
