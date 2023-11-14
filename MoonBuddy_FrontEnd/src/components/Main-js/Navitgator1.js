@@ -33,7 +33,7 @@ const Navitgator1 = () => {
     <PurpledStyledNav>
       <Link to="/login">로그인 |</Link>
       <Link to="/sign">회원가입 |</Link>
-      <Link to="#">마이페이지 |</Link>
+      <Link to="/mypage">마이페이지 |</Link>
       <Link to="#">언어설정</Link>
     </PurpledStyledNav>
   );

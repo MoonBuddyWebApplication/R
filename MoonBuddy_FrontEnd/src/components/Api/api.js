@@ -12,9 +12,9 @@ export const login = () => {
   return api.get('/board/viewAll');
 };
 
-// export const logout = () => {
-//   api.post;
-// };
+export const logout = () => {
+  api.post('/board/post');
+};
 
 // export const signup = () => {
 //   api.post;
