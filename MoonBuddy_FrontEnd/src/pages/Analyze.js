@@ -1,6 +1,7 @@
 import NavigatorMain from "../components/Main-js/Navigator_main";
 import Navitgator1 from "../components/Main-js/Navitgator1";
 import styled from "styled-components";
+import { useState } from "react";
 import AnalyzeGrid from "../components/Com-js/AnalyzeGrid";
 
 export default function Analyze() {
@@ -46,35 +47,48 @@ export default function Analyze() {
     {
       brand: "브랜드1",
       name: "제품1",
-      price: "가격1",
+      price: "10800",
       image: "imgs/sample.png",
     },
     {
       brand: "브랜드2",
       name: "제품2",
-      price: "가격2",
+      price: "20800",
       image: "imgs/sample.png",
     },
     {
       brand: "브랜드3",
       name: "제품3",
-      price: "가격3",
+      price: "12000",
       image: "imgs/sample.png",
     },
     {
       brand: "브랜드4",
       name: "제품4",
-      price: "가격4",
+      price: "35000",
       image: "imgs/sample.png",
     },
     {
       brand: "브랜드5",
       name: "제품5",
-      price: "가격5",
+      price: "70000",
       image: "imgs/sample.png",
     },
     // 추가 데이터 여따가
   ];
+
+  const [sortBy, setSortBy] = useState("popular"); // 'popular'이 기본 정렬
+
+  const handleSort = (sortType) => {
+    setSortBy(sortType);
+  };
+
+  const productUp = [...productData].sort(
+    (a, b) => parseInt(a.price) - parseInt(b.price)
+  );
+  const productDown = [...productData].sort(
+    (a, b) => parseInt(b.price) - parseInt(a.price)
+  );
 
   return (
     <div>
@@ -82,27 +96,41 @@ export default function Analyze() {
       <NavigatorMain />
       <Container>
         <div className="sortBar">
-          <span>인기순 |</span>
-          <span> 출시순 |</span>
-          <span> 별점순 |</span>
-          <span> 리뷰순</span>
+          <span onClick={() => handleSort("popular")}>인기순 |</span>
+          <span onClick={() => handleSort("release")}> 출시순 |</span>
+          <span onClick={() => handleSort("up")}> 오름차순 |</span>
+          <span onClick={() => handleSort("down")}> 내림차순</span>
           <div style={{ marginTop: "14px", fontSize: "20px" }}>
             {arrLen}개의 게시물
           </div>
         </div>
         <div className="displayBar">
-          {productData.map((product, index) => (
-            <div className="imgBox" key={index}>
-              <img src={product.image} alt={product.name} />
-              <div style={{ fontSize: "15px" }}>{product.brand}</div>
-              <div style={{ fontSize: "24px", marginTop: "4px" }}>
-                {product.name}
+          {sortBy === "popular" &&
+            productUp.map((product, index) => (
+              <div className="imgBox" key={index}>
+                <img src={product.image} alt={product.name} />
+                <div style={{ fontSize: "15px" }}>{product.brand}</div>
+                <div style={{ fontSize: "24px", marginTop: "4px" }}>
+                  {product.name}
+                </div>
+                <div style={{ fontSize: "32px", marginTop: "4px" }}>
+                  {product.price}
+                </div>
               </div>
-              <div style={{ fontSize: "32px", marginTop: "4px" }}>
-                {product.price}
+            ))}
+          {sortBy === "down" &&
+            productDown.map((product, index) => (
+              <div className="imgBox" key={index}>
+                <img src={product.image} alt={product.name} />
+                <div style={{ fontSize: "15px" }}>{product.brand}</div>
+                <div style={{ fontSize: "24px", marginTop: "4px" }}>
+                  {product.name}
+                </div>
+                <div style={{ fontSize: "32px", marginTop: "4px" }}>
+                  {product.price}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
         </div>
       </Container>
     </div>
