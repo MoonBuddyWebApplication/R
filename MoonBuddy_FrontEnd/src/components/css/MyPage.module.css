@@ -1,35 +1,33 @@
 @import url("https://fonts.googleapis.com/css2?family=Aoboshi+One&family=Gugi&family=Noto+Serif+KR:wght@200&display=swap");
 
 .Container {
-    display: flex;
-    justify-content: space-evenly;
-    font-family: "Aoboshi One", serif;
-    font-family: "Gugi", cursive;
-    font-family: "Noto Serif KR", serif;
+  display: flex;
+  justify-content: space-evenly;
+  font-family: "Aoboshi One", serif;
+  font-family: "Gugi", cursive;
+  font-family: "Noto Serif KR", serif;
 }
 
-.LeftArea {}
-
-.title {}
-
-.MYprofile {}
-
+.title {
+  margin-top: 170px;
+}
 .profile {
-    fill: #B6A3E3;
+  fill: #b6a3e3;
 }
 
 .RightArea {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
 .btn_Like,
 .btn_mypost {
-    border: none;
-    border-radius: 10px;
-    background-color: #DAD0F0;
-    width: 277px;
-    height: 64px;
-    cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  background-color: #dad0f0;
+  width: 277px;
+  height: 64px;
+  cursor: pointer;
+  margin-top: 300px;
 }
