@@ -3,9 +3,6 @@ import { useState } from "react";
 // import { useNavigate } from "react-router-dom";
 import NavigatorMain from "../components/Main-js/Navigator_main";
 import Navitgator1 from "../components/Main-js/Navitgator1";
-import { SignUpApi } from "../components/Api/api";
-import { useEffect } from "react";
-import axios from "axios";
 const StyledButton = styled.div`
   background-color: #c7a2f8;
   width: 100%;
@@ -123,9 +120,6 @@ const StyledJoin = styled.div`
     flex-direction: column;
     padding: 20px;
     margin-left: 10px;
-    input {
-      outline: none;
-    }
   }
   .weightBowl {
     display: flex;
@@ -141,76 +135,59 @@ const StyledJoin = styled.div`
     border-color: #998ff3;
     margin-top: 10px;
   }
-  .explain {
-    display: flex;
-    justify-content: center;
-    font-size: 24px;
-    padding: 10px;
-  }
 `;
 
-export default function Signup() {
+export default function ModifyMe() {
   //   const navigate = useNavigate();
   const [userId, setUserId] = useState("");
   const [pw, setPw] = useState("");
-  const [nickName, setNickName] = useState("");
-  const [absorb, setAbsorb] = useState(0);
-  const [humidity, setHumidity] = useState(0);
-  const [satisfaction, setSatisfaction] = useState(0);
-  const [safety, setSafety] = useState(0);
-  const [price, setPrice] = useState(0);
+  const [userName, setUserName] = useState("");
 
+  const [email, setEmail] = useState("");
+  const [phonenum, setPhonenum] = useState("");
   const handleIdChange = (e) => {
     setUserId(e.target.value);
   };
   const handlePwChange = (e) => {
     setPw(e.target.value);
   };
-  const handleNickChange = (e) => {
-    setNickName(e.target.value);
+  const handlePhoneChange = (e) => {
+    setPhonenum(e.target.value);
   };
-  const handleAbsorbChange = (e) => {
-    setAbsorb(e.target.value);
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
   };
-  const handleHumidityChange = (e) => {
-    setHumidity(e.target.value);
+  const handleUserNameChange = (e) => {
+    setUserName(e.target.value);
   };
-  const handleSatisfactionChange = (e) => {
-    setSatisfaction(e.target.value);
-  };
-  const handleSafetyChange = (e) => {
-    setSafety(e.target.value);
-  };
-  const handlePriceChange = (e) => {
-    setPrice(e.target.value);
-  };
-  const SignUpBtn = () => {
-    axios
-      .post(
-        "https://port-0-moonbuddy-spring-euegqv2lloic2m5c.sel5.cloudtype.app/user/create",
-        {
-          userData,
-        }
-      )
-      .then((res) => {
-        console.log("res", res);
-      })
-      .catch((error) => {
-        console.error("Error:", error.response.data.message);
-        alert(error.response.data.message);
-      });
-    document.location.href = "/";
-  }; // api.get 자체가 동기코드
 
-  const userData = {
-    userId: userId,
-    pw: pw,
-    nickName: nickName,
-    absorb: absorb,
-    humidity: humidity,
-    satisfaction: satisfaction,
-    safety: safety,
-    price: price,
+  const join = () => {
+    const formData = new FormData();
+
+    const user = {
+      userId: userId,
+      pw: pw,
+      userName: userName,
+
+      email: email,
+    };
+    formData.append(
+      "user",
+      new Blob([JSON.stringify(user)], { type: "application/json" })
+    );
+    console.log("user=>", user);
+
+    console.log("formData=>", formData);
+
+    // signUp(formData)
+    //   .then((res) => {
+    //     console.log(res.data);
+    //     alert("회원가입에 성공했습니다.");
+    //     navigate("/login");
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error : ", error);
+    //   });
   };
 
   return (
@@ -224,13 +201,28 @@ export default function Signup() {
 
           <div className={"joinCompo"}>
             <div className={"joinBar"}>
-              <div className={"name"}>닉네임</div>
+              <div className={"name"}>이름</div>
               <div className={"content"}>
                 <input
                   type="text"
-                  placeholder="문버디에서 사용할 닉네임을 입력하세요"
-                  value={nickName}
-                  onChange={handleNickChange}
+                  placeholder="이름을 입력하세요"
+                  value={userName}
+                  onChange={handleUserNameChange}
+                ></input>
+              </div>
+            </div>
+            <hr></hr>
+          </div>
+
+          <div className={"joinCompo"}>
+            <div className={"joinBar"}>
+              <div className={"name"}>닉네임</div>
+              <div className={"content"}>
+                <input
+                  type="password"
+                  placeholder="'-' 제외하고 입력해주세요"
+                  value={phonenum}
+                  onChange={handlePhoneChange}
                 ></input>
               </div>
             </div>
@@ -266,59 +258,89 @@ export default function Signup() {
             </div>
             <hr></hr>
           </div>
-          <div className="explain">100점 만점으로 입력해주세요 </div>
+
+          <div className={"joinCompo"}>
+            <div className={"joinBar"}>
+              <div className={"name"}>전화번호</div>
+              <div className={"content"}>
+                <input
+                  type="password"
+                  placeholder="'-' 제외하고 입력해주세요"
+                  value={phonenum}
+                  onChange={handlePhoneChange}
+                ></input>
+              </div>
+            </div>
+            <hr></hr>
+          </div>
+
+          <div className={"joinCompo"}>
+            <div className={"joinBar"}>
+              <div className={"name"}>이메일</div>
+              <div className={"content"}>
+                <input
+                  type="text"
+                  placeholder="xxxx@.com의 형식으로 입력해주세요"
+                  value={email}
+                  onChange={handleEmailChange}
+                ></input>
+              </div>
+            </div>
+            <hr></hr>
+          </div>
+
           <div className={"joinCompo"}>
             <div className={"weightBowl"}>
               <div className="bowl">
                 <div className="weightTitle">흡수성능</div>
                 <input
                   className="inputClass"
-                  type="number"
-                  value={absorb}
-                  onChange={handleAbsorbChange}
+                  type="text"
+                  value={email}
+                  onChange={handleEmailChange}
                 ></input>
               </div>
               <div className="bowl">
                 <div className="weightTitle">내부습도</div>
                 <input
                   className="inputClass"
-                  type="number"
-                  value={humidity}
-                  onChange={handleHumidityChange}
+                  type="text"
+                  value={email}
+                  onChange={handleEmailChange}
                 ></input>
               </div>
               <div className="bowl">
                 <div className="weightTitle">소비자만족도</div>
                 <input
                   className="inputClass"
-                  type="number"
-                  value={satisfaction}
-                  onChange={handleSatisfactionChange}
+                  type="text"
+                  value={email}
+                  onChange={handleEmailChange}
                 ></input>
               </div>
               <div className="bowl">
                 <div className="weightTitle">안정성</div>
                 <input
                   className="inputClass"
-                  type="number"
-                  value={safety}
-                  onChange={handleSafetyChange}
+                  type="text"
+                  value={email}
+                  onChange={handleEmailChange}
                 ></input>
               </div>
               <div className="bowl">
                 <div className="weightTitle">가격</div>
                 <input
                   className="inputClass"
-                  type="number"
-                  value={price}
-                  onChange={handlePriceChange}
+                  type="text"
+                  value={email}
+                  onChange={handleEmailChange}
                 ></input>
               </div>
             </div>
           </div>
         </div>
 
-        <StyledButton onClick={SignUpBtn}>회원가입</StyledButton>
+        <StyledButton onClick={join}>수정하기</StyledButton>
       </StyledJoin>
     </div>
   );

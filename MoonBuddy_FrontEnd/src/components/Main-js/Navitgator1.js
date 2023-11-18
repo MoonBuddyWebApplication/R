@@ -28,15 +28,15 @@ const PurpledStyledNav = styled.nav`
   }
 `;
 
-const Navitgator1 = () => {
+const Navigator1 = () => {
   return (
     <PurpledStyledNav>
       <Link to="/login">로그인 |</Link>
-      <Link to="/sign">회원가입 |</Link>
+      <Link to="/signup">회원가입 |</Link>
       <Link to="/mypage">마이페이지 |</Link>
       <Link to="#">언어설정</Link>
     </PurpledStyledNav>
   );
 };
 
-export default Navitgator1;
+export default Navigator1;

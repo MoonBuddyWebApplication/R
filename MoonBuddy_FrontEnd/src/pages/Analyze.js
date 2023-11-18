@@ -48,6 +48,8 @@ export default function Analyze() {
       brand: "브랜드1",
       name: "제품1",
       price: "10800",
+      popularity: "100",
+      date: "100",
       image: "imgs/sample.png",
     },
     {

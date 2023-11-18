@@ -9,13 +9,15 @@ const api = axios.create({
   withCredentials: true /*인증정보를 담아 보낼떄 이렇게 한대 쿠키를 보내겠다 라는 의미*/,
 });
 
-export const boardGet = async () => {
-  try {
-    const response = await api.get("/board/viewAll");
-    // 요청이 성공했을 때 실행되는 부분
-    console.log("응답 데이터:", response.data);
-  } catch (error) {
-    // 요청이 실패했을 때 실행되는 부분
-    console.error("에러 발생:", error);
-  }
+export const boardGet = () => {
+  //화살표 함수 공부 필요, promise 는 이제 쓰지 않는다, async await 공부 필요
+  return api.get("/board/viewAll"); // api.get 자체가 동기코드
+};
+export const Login = () => {
+  //화살표 함수 공부 필요, promise 는 이제 쓰지 않는다, async await 공부 필요
+  return api.post("/board/viewAll"); // api.get 자체가 동기코드
+};
+export const SignUpApi = () => {
+  //화살표 함수 공부 필요, promise 는 이제 쓰지 않는다, async await 공부 필요
+  return api.post("/user/create"); // api.get 자체가 동기코드
 };

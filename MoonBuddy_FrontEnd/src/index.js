@@ -8,11 +8,11 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Analyze from "./pages/Analyze";
 import News from "./pages/News";
-import IngredAnalysis_comp from "./components/IngredientAnalysis-js/IngredAnalysis_comp"
+import IngredAnalysis_comp from "./components/IngredientAnalysis-js/IngredAnalysis_comp";
 import MyPage from "./components/MyPage-js/MyPage";
 import CommunityMini from "./pages/CommunityMini";
 import NewsDetail from "./pages/NewsDetail";
-
+import ModifyMe from "./pages/ModifyMe";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -27,7 +27,7 @@ const router = createBrowserRouter([
     element: <Login />,
   },
   {
-    path: "/sign",
+    path: "/signup",
     element: <Signup />,
   },
   {
@@ -39,13 +39,14 @@ const router = createBrowserRouter([
     element: <News />,
   },
   {
+    path: "/news/:id",
+    element: <NewsDetail />,
+  },
+  {
     path: "/analyze/IngredientAnalysis",
     element: <IngredAnalysis_comp />,
   },
-  {
-    path: "/newsdetail",
-    element: <NewsDetail />,
-  },
+
   {
     path: "/mypage",
     element: <MyPage />,
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
   {
     path: "/comchat",
     element: <CommunityMini />,
+  },
+  {
+    path: "/modifyme",
+    element: <ModifyMe />,
   },
 ]);
 

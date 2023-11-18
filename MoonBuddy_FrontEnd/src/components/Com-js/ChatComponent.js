@@ -3,6 +3,7 @@ import styled from "styled-components";
 export default function ChatComponent({ props }) {
   const goodLen = 15;
   const comLen = 3;
+  const { content, title, writer } = props;
   const Chat = styled.div`
     width: 1320px;
     height: 180px;
@@ -25,12 +26,12 @@ export default function ChatComponent({ props }) {
   `;
   return (
     <Chat>
-      <Topic>{props}</Topic>
-      <div style={{ fontSize: "36px", marginTop: "8px" }}>
-        허리 통증 시 대처법 공유합니다
+      <Topic>{content}</Topic>
+      <div style={{ fontSize: "36px", marginTop: "8px" }}>{title}</div>
+      <div style={{ marginTop: "4px" }}>{writer}</div>
+      <div style={{ marginTop: "18px" }}>
+        {content !== null && <div style={{ marginTop: "4px" }}>{title}</div>}
       </div>
-      <div style={{ marginTop: "4px" }}>hihi</div>
-      <div style={{ marginTop: "18px" }}>진짜진짜 꿀팁</div>
       <div style={{ display: "flex", justifyContent: "flex-end" }}>
         <div style={{ marginRight: "5px" }}>
           <img

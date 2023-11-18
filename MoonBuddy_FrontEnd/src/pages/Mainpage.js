@@ -10,7 +10,6 @@ import Footer from "../components/Main-js/Footer";
 import { boardGet, logout } from "../components/Api/api";
 
 const Mainpage = () => {
-  boardGet();
   return (
     <div style={{ width: "100%" }}>
       <Navitgator1 />
