@@ -16,6 +16,7 @@ const StyledButton = styled.div`
   padding: 35px 0px;
   border-radius: 10px;
   box-shadow: 6px 6px 4px rgb(0, 0, 0, 0.25);
+  margin-bottom: 40px;
 `;
 const StyledJoin = styled.div`
   width: 976px;
@@ -189,7 +190,14 @@ export default function Signup() {
       .post(
         "https://port-0-moonbuddy-spring-euegqv2lloic2m5c.sel5.cloudtype.app/user/create",
         {
-          userData,
+          userId: "dkdkdk",
+          pw: "dodod",
+          nickName: "leechangkyu",
+          absorb: 20,
+          humidity: 20,
+          satisfaction: 10,
+          safety: 30,
+          price: 20,
         }
       )
       .then((res) => {
