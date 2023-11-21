@@ -9,7 +9,7 @@ import Signup from "./pages/Signup";
 import Analyze from "./pages/Analyze";
 import News from "./pages/News";
 import IngredAnalysis_comp from "./components/IngredientAnalysis-js/IngredAnalysis_comp";
-import MyPage from "./components/MyPage-js/MyPage";
+import MyPage from "./pages/MyPage";
 import CommunityMini from "./pages/CommunityMini";
 import NewsDetail from "./pages/NewsDetail";
 import ModifyMe from "./pages/ModifyMe";
@@ -43,7 +43,7 @@ const router = createBrowserRouter([
     element: <NewsDetail />,
   },
   {
-    path: "/analyze/IngredientAnalysis",
+    path: "/analyze/:detail",
     element: <IngredAnalysis_comp />,
   },
 

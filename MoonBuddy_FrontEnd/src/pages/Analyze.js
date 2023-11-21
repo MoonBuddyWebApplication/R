@@ -3,7 +3,7 @@ import Navitgator1 from "../components/Main-js/Navitgator1";
 import styled from "styled-components";
 import { useState } from "react";
 import AnalyzeGrid from "../components/Com-js/AnalyzeGrid";
-
+import { Link } from "react-router-dom";
 export default function Analyze() {
   const Container = styled.div`
     width: 1344px;
@@ -37,6 +37,11 @@ export default function Analyze() {
         width: 100%;
         margin-top: 4px;
       }
+    }
+
+    a {
+      text-decoration: none;
+      color: black;
     }
   `;
 
@@ -110,7 +115,10 @@ export default function Analyze() {
           {sortBy === "popular" &&
             productUp.map((product, index) => (
               <div className="imgBox" key={index}>
-                <img src={product.image} alt={product.name} />
+                <Link to={`/analyze/${index + 1}`} key={index}>
+                  <img src={product.image} alt={product.name} />
+                </Link>
+
                 <div style={{ fontSize: "15px" }}>{product.brand}</div>
                 <div style={{ fontSize: "24px", marginTop: "4px" }}>
                   {product.name}
@@ -123,7 +131,10 @@ export default function Analyze() {
           {sortBy === "down" &&
             productDown.map((product, index) => (
               <div className="imgBox" key={index}>
-                <img src={product.image} alt={product.name} />
+                <Link to={`/analyze/${index + 1}`} key={index}>
+                  <img src={product.image} alt={product.name} />
+                </Link>
+
                 <div style={{ fontSize: "15px" }}>{product.brand}</div>
                 <div style={{ fontSize: "24px", marginTop: "4px" }}>
                   {product.name}
