@@ -239,7 +239,22 @@ export default function ModifyMe() {
 
       <StyledJoin>
         <div>
-          <div className={"join"}>회원정보 수정</div>
+          <div className={"join"}>회원가입 수정</div>
+
+          <div className={"joinCompo"}>
+            <div className={"joinBar"}>
+              <div className={"name"}>이름</div>
+              <div className={"content"}>
+                <input
+                  type="text"
+                  placeholder="이름을 입력하세요"
+                // value={userName}
+                // onChange={handleUserNameChange}
+                ></input>
+              </div>
+            </div>
+            <hr></hr>
+          </div>
 
           <div className={"joinCompo"}>
             <div className={"joinBar"}>

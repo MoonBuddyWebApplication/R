@@ -23,7 +23,7 @@ h3 {
 .Section1 {
     display: flex;
     align-items: center;
-    
+
 }
 
 .Section1 .title {
@@ -45,16 +45,38 @@ h3 {
 
 /* section2 관련 */
 .Section2 {
-    width: 589px;
+    width: 590px;
     height: 348px;
-    background-color: antiquewhite;
+    border-bottom: 3px solid;
 }
 
 .Section2 .title {
     display: flex;
-    font-size: 32px;
-    padding-bottom: 1%;
+    align-items: baseline;
     border-bottom: 3px solid;
+}
+
+.Section2 h4 {
+    margin: 0;
+    font-size: 32px;
+    margin-right: 2%;
+}
+
+.Ingredi_container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 288px;
+}
+
+.btn_Ingredi {
+    width: 590px;
+    cursor: pointer;
+    font-size: 20px;
+    border: 0;
+    background-color: transparent;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 /* section3 관련 */
@@ -81,36 +103,16 @@ h3 {
     align-items: center;
 }
 
-.TabList {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 0;
-    /* background-color: #ce8826; */
+.Tabs {
     width: 100%;
-    /* width: calc(100% /2); */
-    border-bottom: 2px solid #6E00FD;
+    margin-bottom: 10px;
 }
 
-.TabList::after {
-    border: 2px solid #9bce26;
-    height: 51px;
-    border-bottom: 0;
-    color: #333;
-    padding: 15px px 0 0;
-    background: #fff;
+.Tabs>li>button {
+    color: #6E00FD;
+    font-size: 40px;
 }
 
-.TabList li {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 424px;
-    height: 80px;
-    list-style: none;
-    border: 2px solid #6E00FD;
-    border-bottom: none;
-    font-size: 45px;
-    cursor: pointer;
+.Tabs>li>button:hover {
+    background-color: #b6a3e390;
 }
-
-.Review {}

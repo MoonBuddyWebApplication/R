@@ -11,8 +11,6 @@ import { logout } from "../components/Api/api";
 
 
 const Mainpage = () => {
-<<<<<<< Updated upstream
-=======
   // GetData();
   // React.useEffect(() => {
   //   const fetchData = async () => {
@@ -29,7 +27,6 @@ const Mainpage = () => {
 
   //   fetchData();
   // }, []);
->>>>>>> Stashed changes
   return (
     <div style={{ width: "100%" }}>
       <Navitgator1 />
