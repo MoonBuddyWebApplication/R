@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import NavigatorMain from "../Main-js/Navigator_main";
 import Navitgator1 from "../Main-js/Navitgator1";
 import style from "../css/IngredientAnalysis.module.css";
@@ -9,6 +9,7 @@ import ReviewComment from './ReviewComment';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { product_id } from '../Api/api';
 
 //[인증마크]모달 데이터 관리
 const ModalData = [
@@ -76,6 +77,15 @@ const IngrediList = ({ ingredients, handleOpen }) => {
         </div>
     ));
 };
+const List = ({ ingredients, handleOpen }) => {
+    return ingredients.map((ingredient, index) => (
+        <div style={{ borderBottom: '1px solid' }}>
+            <div key={index} className={style.btn_Ingredi} onClick={() => handleOpen(index)}>
+                {ingredient.title}
+            </div >
+        </div>
+    ));
+};
 
 const IngredientAnalysis = () => {
     const [openModal, setOpenModal] = useState(false);
@@ -84,41 +94,53 @@ const IngredientAnalysis = () => {
     const [INopenModal, INsetOpenModal] = useState(false);
     const [INModalIndex, setINModalIndex] = useState(0);
 
+    //인증마크창 모달 관련
     const handleOpen = (index) => {
         setCurrentModalIndex(index);
         setOpenModal(true);
     };
+    const handleClose = () => {
+        setOpenModal(false);
+    };
+
+    //성분창 모달 관련
     const INhandleOpen = (index) => {
         setINModalIndex(index);
         INsetOpenModal(true);
-    };
-
-    const handleClose = () => {
-        setOpenModal(false);
     };
     const INhandleClose = () => {
         INsetOpenModal(false);
     };
 
-    const [activeTab, setActiveTab] = useState('feat');
-    const featLiLength = document.querySelectorAll('li').length;
-    const borderStyle = activeTab === 'feat' ? { borderBottom: featLiLength ? `${featLiLength * 2}px solid transparent` : 'none' } : {};
-    console.log('dd', featLiLength);
+    const [res, setRes] = useState([]);
+
+    useEffect(() => {
+        getData();
+    }, []);
+
+    const getData = async () => {
+        const response = await product_id(1); //해당id값을 어케 받을지 고민
+        setRes(response);
+        console.log(res);
+    };
+    console.log(res?.data); //옵셔널 체이닝
+    const A = res?.data || [];
     return (
         <div>
             <Navitgator1 />
             <NavigatorMain />
             <div className={style.container}>
                 {/* 제품 정보(이미지,브랜드,이름,가격) 파트 */}
+                {/* A.map((P, index) => {}); */}
                 <div className={style.LeftArea_ProductInfo}>
                     <div>
                         <img src={"/imgs/Products/[제품]건강한 순수한면.jpg"} alt="건강한 순수한면" />
                     </div>
                     <div className={style.LeftBotton}>
                         <div>
-                            <p className={style.brand}>(순수한면)</p>
-                            <p className={style.name}><h3>(건강한 순수한면)</h3></p>
-                            <p className={style.price}>(가격)원</p>
+                            <p className={style.brand}>{A.category}</p>
+                            <p className={style.name}><h3>{A.name}</h3></p>
+                            <p className={style.price}>{A.price}원</p>
                         </div>
                         <div><AiOutlineShareAlt size={25} /> <AiOutlineHeart size={25} /></div>
                     </div>

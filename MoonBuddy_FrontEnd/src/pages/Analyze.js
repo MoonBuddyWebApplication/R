@@ -1,9 +1,14 @@
+import { useEffect } from "react";
 import NavigatorMain from "../components/Main-js/Navigator_main";
 import Navitgator1 from "../components/Main-js/Navitgator1";
 import styled from "styled-components";
 import { useState } from "react";
 import AnalyzeGrid from "../components/Com-js/AnalyzeGrid";
 import { Link } from "react-router-dom";
+import { productGet } from "../components/Api/api";
+
+
+
 export default function Analyze() {
   const Container = styled.div`
     width: 1344px;
@@ -15,6 +20,28 @@ export default function Analyze() {
     font-family: "Gugi", cursive;
     font-family: "Noto Serif KR", serif;
 
+    .description{
+      img {
+        position: relative;
+        width: 100%;
+        height: 300px;
+        border-radius: 10px;
+      }
+      .img_text{
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        transform: translate( -50%, -50% );
+        text-align: center;
+        font-size: 30px;
+        span{
+          color: #330075;
+        }
+        p{
+          font-size: 15px;
+        }
+      }
+    }
     .sortBar {
       font-size: 10px;
       margin-top: 14px;
@@ -46,7 +73,19 @@ export default function Analyze() {
   `;
 
   const arrLen = 150;
+  const [res, setRes] = useState([]);
 
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const getData = async () => {
+    const response = await productGet();
+    setRes(response);
+    console.log(res);
+  };
+  console.log(res?.data); //옵셔널 체이닝
+  const A = res?.data || [];
   // 제품 데이터 배열 정의
   const productData = [
     {
@@ -90,10 +129,10 @@ export default function Analyze() {
     setSortBy(sortType);
   };
 
-  const productUp = [...productData].sort(
+  const productUp = [...A].sort(
     (a, b) => parseInt(a.price) - parseInt(b.price)
   );
-  const productDown = [...productData].sort(
+  const productDown = [...A].sort(
     (a, b) => parseInt(b.price) - parseInt(a.price)
   );
 
@@ -102,6 +141,14 @@ export default function Analyze() {
       <Navitgator1 />
       <NavigatorMain />
       <Container>
+        <div className="description" >
+          <img src={"imgs/description.png"} />
+          <p className="img_text"><span>문버디 스코어</span>로
+            <br />본인에게 가장 잘 맞는 생리대를 찾아보세요.
+            <br /><br /><p>회원님의 취향을 기반으로 스코어를 매겼어요!</p>
+          </p>
+        </div>
+        {/* <img src={"imgs/description.png"} className="description" /> */}
         <div className="sortBar">
           <span onClick={() => handleSort("popular")}>인기순 |</span>
           <span onClick={() => handleSort("release")}> 출시순 |</span>
@@ -116,7 +163,7 @@ export default function Analyze() {
             productUp.map((product, index) => (
               <div className="imgBox" key={index}>
                 <Link to={`/analyze/${index + 1}`} key={index}>
-                  <img src={product.image} alt={product.name} />
+                  <img src={product.picture} alt={product.name} />
                 </Link>
 
                 <div style={{ fontSize: "15px" }}>{product.brand}</div>
@@ -132,7 +179,7 @@ export default function Analyze() {
             productDown.map((product, index) => (
               <div className="imgBox" key={index}>
                 <Link to={`/analyze/${index + 1}`} key={index}>
-                  <img src={product.image} alt={product.name} />
+                  <img src={product.picture} alt={product.name} />
                 </Link>
 
                 <div style={{ fontSize: "15px" }}>{product.brand}</div>
