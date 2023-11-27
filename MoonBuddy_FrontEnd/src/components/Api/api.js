@@ -21,3 +21,11 @@ export const SignUpApi = () => {
   //화살표 함수 공부 필요, promise 는 이제 쓰지 않는다, async await 공부 필요
   return api.post("/user/create"); // api.get 자체가 동기코드
 };
+export const productGet = () => {
+  //화살표 함수 공부 필요, promise 는 이제 쓰지 않는다, async await 공부 필요
+  return api.get("/product/viewAll"); // api.get 자체가 동기코드
+};
+export const product_id = (id) => {
+  //화살표 함수 공부 필요, promise 는 이제 쓰지 않는다, async await 공부 필요
+  return api.get(`/product/view/${id}`); // api.get 자체가 동기코드
+};
