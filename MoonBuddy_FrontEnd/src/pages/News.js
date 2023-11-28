@@ -3,6 +3,7 @@ import NavigatorMain from "../components/Main-js/Navigator_main";
 import styled from "styled-components";
 import Navigator1 from "../components/Main-js/Navitgator1";
 import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 export default function News() {
   const Container = styled.div`
     @import url("https://fonts.googleapis.com/css2?family=Aoboshi+One&family=Gugi&family=Noto+Serif+KR:wght@200&display=swap");
@@ -49,14 +50,14 @@ export default function News() {
   const gotoDetail = useNavigate();
   const newsData = [
     {
-      title: "‘욱씬욱씬 생리통’ 가만히 둬도 괜찮을까?",
+      title: "세계 월경의 날: 월경에 대한 5가지 오해",
       summary: "호호",
       date: "2023-10-29",
       image: "imgs/News1 (1).png",
       popularity: "90",
     },
     {
-      title: "세계 월경의 날: 월경에 대한 5가지 오해",
+      title: "‘욱씬욱씬 생리통’ 가만히 둬도 괜찮을까?",
       summary: "인생은",
       date: "2023-10-29",
       image: "imgs/News1 (2).png",
@@ -72,6 +73,11 @@ export default function News() {
 
     // 추가 데이터 여따가
   ];
+
+  const { id } = useParams();
+
+  console.log(id);
+
   return (
     <Container>
       <Navigator1 />

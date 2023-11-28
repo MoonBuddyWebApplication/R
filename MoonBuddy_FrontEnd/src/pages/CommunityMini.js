@@ -118,13 +118,15 @@ export default function CommunityMini({ props }) {
         <div className="title">{firstData?.title}</div>
 
         <div className="nickDiv">
-          <div>{firstData?.title}</div>
-          <div>{date}</div>
+          <div>{firstData?.writer}</div>
+          <div>
+            {new Date(firstData?.replyList[0].createdDate).toLocaleString()}
+          </div>
         </div>
       </TitleCom>
       <Sector>
         <hr />
-        <div className="sector"> 좋은 느낌 밖에 몰라요 ㅜ</div>
+        <div className="sector">{firstData?.content}</div>
         <hr />
       </Sector>
 
@@ -133,7 +135,7 @@ export default function CommunityMini({ props }) {
           {Data.map((varId) => (
             <div key={varId.id}>
               <div className="nickGet">{varId?.replyList[0].nickname}</div>
-              <div>{varId.title}</div>
+              <div>{varId?.replyList[0].comment}</div>
             </div>
           ))}
         </div>
