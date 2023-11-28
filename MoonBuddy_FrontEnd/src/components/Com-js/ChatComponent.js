@@ -6,7 +6,7 @@ export default function ChatComponent({ props }) {
   const { content, title, writer } = props;
   const Chat = styled.div`
     width: 1320px;
-    height: 180px;
+    height: 240px;
     border: solid 0.2em;
     border-radius: 10px;
     border-color: #3d008b;

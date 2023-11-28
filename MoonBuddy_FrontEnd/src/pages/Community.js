@@ -3,6 +3,7 @@ import styled from "styled-components";
 import ChatComponent from "../components/Com-js/ChatComponent";
 import { boardGet } from "../components/Api/api";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Navigator1 from "../components/Main-js/Navitgator1";
 export default function Community() {
   const [res, setRes] = useState();
@@ -27,7 +28,12 @@ export default function Community() {
     background-color: white;
     color: #b6a3e3;
   `;
-
+  const LinkDiv = styled.div`
+    a {
+      text-decoration: none;
+      color: black;
+    }
+  `;
   useEffect(() => {
     getData();
   }, []);
@@ -56,9 +62,13 @@ export default function Community() {
         </div>
         <div>{arrayLen}개의 게시물 </div>
       </LittleNav>
-      {res?.data.map((idx) => (
-        <ChatComponent props={idx} />
-      ))}
+      <LinkDiv>
+        <Link to="/comchat">
+          {res?.data.map((idx) => (
+            <ChatComponent props={idx} />
+          ))}
+        </Link>
+      </LinkDiv>
     </div>
   );
 }

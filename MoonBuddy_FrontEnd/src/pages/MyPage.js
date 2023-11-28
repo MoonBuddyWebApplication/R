@@ -41,6 +41,11 @@ const MyPage = () => {
       margin-top: 50px;
       font-size: 20px;
     }
+    .btnArea {
+      margin-top: -80px;
+      display: flex;
+      flex-direction: column;
+    }
   `;
   return (
     <div>
@@ -58,10 +63,16 @@ const MyPage = () => {
               <h2 style={{ fontSize: "24px" }}>아이디</h2>
               <h2 style={{ fontSize: "24px" }}>이름</h2>
             </div>
-            <div>
+            <div className="btnArea">
               <Link to="/modifyme">
                 <button type="button">
                   회원정보 수정
+                  <CgPen />
+                </button>
+              </Link>
+              <Link to="/modifyrate">
+                <button type="button">
+                  가중치 수정
                   <CgPen />
                 </button>
               </Link>

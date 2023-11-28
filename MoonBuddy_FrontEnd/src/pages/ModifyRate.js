@@ -148,7 +148,7 @@ const StyledJoin = styled.div`
   }
 `;
 
-export default function ModifyMe() {
+export default function ModifyRate() {
   //   const navigate = useNavigate();
   const [userId, setUserId] = useState("");
   const [pw, setPw] = useState("");
@@ -239,85 +239,58 @@ export default function ModifyMe() {
 
       <StyledJoin>
         <div>
-          <div className={"join"}>회원가입 수정</div>
+          <div className={"join"}>문버디스코어 수정</div>
 
+          <div className="explain">100점 만점으로 입력해주세요 </div>
           <div className={"joinCompo"}>
-            <div className={"joinBar"}>
-              <div className={"name"}>이름</div>
-              <div className={"content"}>
+            <div className={"weightBowl"}>
+              <div className="bowl">
+                <div className="weightTitle">흡수성능</div>
                 <input
-                  type="text"
-                  placeholder="이름을 입력하세요"
-                  // value={userName}
-                  // onChange={handleUserNameChange}
+                  className="inputClass"
+                  type="number"
+                  value={absorb}
+                  onChange={handleAbsorbChange}
+                ></input>
+              </div>
+              <div className="bowl">
+                <div className="weightTitle">내부습도</div>
+                <input
+                  className="inputClass"
+                  type="number"
+                  value={humidity}
+                  onChange={handleHumidityChange}
+                ></input>
+              </div>
+              <div className="bowl">
+                <div className="weightTitle">소비자만족도</div>
+                <input
+                  className="inputClass"
+                  type="number"
+                  value={satisfaction}
+                  onChange={handleSatisfactionChange}
+                ></input>
+              </div>
+              <div className="bowl">
+                <div className="weightTitle">안정성</div>
+                <input
+                  className="inputClass"
+                  type="number"
+                  value={safety}
+                  onChange={handleSafetyChange}
+                ></input>
+              </div>
+              <div className="bowl">
+                <div className="weightTitle">가격</div>
+                <input
+                  className="inputClass"
+                  type="number"
+                  value={price}
+                  onChange={handlePriceChange}
                 ></input>
               </div>
             </div>
-            <hr></hr>
           </div>
-
-          <div className={"joinCompo"}>
-            <div className={"joinBar"}>
-              <div className={"name"}>닉네임</div>
-              <div className={"content"}>
-                <input
-                  type="text"
-                  placeholder="문버디에서 사용할 닉네임을 입력하세요"
-                  value={nickName}
-                  onChange={handleNickChange}
-                ></input>
-              </div>
-            </div>
-            <hr></hr>
-          </div>
-
-          <div className={"joinCompo"}>
-            <div className={"joinBar"}>
-              <div className={"name"}>아이디</div>
-              <div className={"content"}>
-                <input
-                  type="text"
-                  placeholder="6~12자의 영문, 숫자만 사용 가능합니다"
-                  value={userId}
-                  onChange={handleIdChange}
-                ></input>
-              </div>
-            </div>
-            <hr></hr>
-          </div>
-
-          <div className={"joinCompo"}>
-            <div className={"joinBar"}>
-              <div className={"name"}>비밀번호</div>
-              <div className={"content"}>
-                <input
-                  type="text"
-                  placeholder="8~20자의 숫자, 특수문자, 영문자만 사용 가능합니다"
-                  value={pw}
-                  onChange={handlePwChange}
-                ></input>
-              </div>
-            </div>
-            <hr></hr>
-          </div>
-
-          <div className={"joinCompo"}>
-            <div className={"joinBar"}>
-              <div className={"name"}>비밀번호 확인</div>
-              <div className={"content"}>
-                <input
-                  type="password"
-                  placeholder="8~20자의 숫자, 특수문자, 영문자만 사용 가능합니다"
-                  value={pwConfirm}
-                  onChange={handlePwConfirmChange}
-                ></input>
-              </div>
-            </div>
-            <hr></hr>
-          </div>
-          {pwConfirm !== "" && pw !== "" && isError && (
-            <p className="passwdCheck">비밀번호가 다릅니다.</p>
-          )}
         </div>
 
         <StyledButton onClick={SignUpBtn}>수정하기</StyledButton>
