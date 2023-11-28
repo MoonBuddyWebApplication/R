@@ -45,7 +45,7 @@ export default function NewsDetail() {
     <div>
       <Navitgator1 />
       <NavigatorMain />
-      <Container>
+      {/* <Container>
         <div className="firstSector">
           <div className="title">기사제목</div>
           <div className="date">{date}</div>
@@ -66,7 +66,7 @@ export default function NewsDetail() {
             <img src="imgs/sample.png" alt="hello"></img>
           </div>
         </div>
-      </Container>
+      </Container> */}
     </div>
   );
 }

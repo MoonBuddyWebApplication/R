@@ -2,14 +2,17 @@ import { useState, useEffect } from 'react';
 import NavigatorMain from "../Main-js/Navigator_main";
 import Navitgator1 from "../Main-js/Navitgator1";
 import style from "../css/IngredientAnalysis.module.css";
-import { AiOutlineShareAlt, AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import style2 from "../css/ReviewComment.module.css";
+import { AiOutlineShareAlt } from "react-icons/ai";
 import { Modal, Box, Button, Typography } from '@mui/material';
-// import TabPanel from '@mui/lab/TabPanel';
 import ReviewComment from './ReviewComment';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { product_id } from '../Api/api';
+
+// import axios from 'axios';
+import { useParams } from "react-router-dom";
 
 //[인증마크]모달 데이터 관리
 const ModalData = [
@@ -77,15 +80,6 @@ const IngrediList = ({ ingredients, handleOpen }) => {
         </div>
     ));
 };
-const List = ({ ingredients, handleOpen }) => {
-    return ingredients.map((ingredient, index) => (
-        <div style={{ borderBottom: '1px solid' }}>
-            <div key={index} className={style.btn_Ingredi} onClick={() => handleOpen(index)}>
-                {ingredient.title}
-            </div >
-        </div>
-    ));
-};
 
 const IngredientAnalysis = () => {
     const [openModal, setOpenModal] = useState(false);
@@ -111,20 +105,89 @@ const IngredientAnalysis = () => {
     const INhandleClose = () => {
         INsetOpenModal(false);
     };
-
+    const { detail } = useParams();
+    console.log(detail);
     const [res, setRes] = useState([]);
 
     useEffect(() => {
         getData();
     }, []);
 
+
     const getData = async () => {
-        const response = await product_id(1); //해당id값을 어케 받을지 고민
+        const response = await product_id(detail); //해당id값을 어케 받을지 고민
         setRes(response);
         console.log(res);
     };
     console.log(res?.data); //옵셔널 체이닝
     const A = res?.data || [];
+
+    //리뷰 댓글
+    // const { boardId } = useParams();
+    // const [content, setContent] = useState();
+    // const [comments, setComments] = useState();
+    // const [parentId, setParentId] = useState("");
+
+    // const getCommentList = async () => {
+    //     console.log("?");
+
+    //     const resp = await axios.get(
+    //         `Get url 필요`,
+    //         {
+    //             withCredentials: true,
+    //         }
+    //     );
+    //     setComments(resp.data); // posts에 data 할당
+    //     console.log(comments);
+    //     console.log("resp", resp.data);
+    // };
+
+    // useEffect(() => {
+    //     getCommentList(); // 1) feed 조회 함수 호출
+    // }, []);
+
+    // axios.defaults.withCredentials = true;
+
+    // const createComment = async (content) => {
+    //     console.log("parentId", {
+    //         comment: content,
+    //         boardId: boardId,
+    //         parentId: parentId,
+    //     });
+    //     await axios
+    //         .post(`https://port-0-moonbuddy-spring-euegqv2lloic2m5c.sel5.cloudtype.app/reply/post`, {
+    //             comment: content,
+    //             boardId: boardId,
+    //             parentId: parentId,
+    //         })
+    //         .then((res) => {
+    //             console.log("res", res.data);
+    //             setComments(res.data);
+    //         })
+    //         .catch((error) => {
+    //             console.log("Error : ", error);
+    //             alert(error.response.data.message);
+    //         });
+    // };
+    // if (!comments) {
+    //     return (
+    //         <div
+    //             style={{
+    //                 display: "flex",
+    //                 flexDirection: "column",
+    //                 alignItems: "center",
+    //             }}
+    //         >
+    //             <div className={style2.loadingScreen}>
+    //                 <span></span>
+    //                 <span></span>
+    //                 <span></span>
+    //             </div>
+    //         </div>
+    //     );
+    // }
+    // 리뷰댓글 끝
+
     return (
         <div>
             <Navitgator1 />
@@ -134,27 +197,26 @@ const IngredientAnalysis = () => {
                 {/* A.map((P, index) => {}); */}
                 <div className={style.LeftArea_ProductInfo}>
                     <div>
-                        <img src={"/imgs/Products/[제품]건강한 순수한면.jpg"} alt="건강한 순수한면" />
+                        <img src={A.product_image} alt={A.name} />
                     </div>
                     <div className={style.LeftBotton}>
                         <div>
-                            <p className={style.brand}>{A.category}</p>
+                            <p className={style.brand}>{A.brand}</p>
                             <p className={style.name}><h3>{A.name}</h3></p>
                             <p className={style.price}>{A.price}원</p>
                         </div>
-                        <div><AiOutlineShareAlt size={25} /> <AiOutlineHeart size={25} /></div>
+                        <AiOutlineShareAlt size={25} />
                     </div>
                 </div >
                 <div className={style.RightArea_IngredientInfo}>
                     {/* 문버디스코어 파트 */}
                     <div className={style.Section1}>
                         <img src={"/imgs/MoonScore.png"} alt="문버디 스코어" height="100px" />
-                        <div className={style.title}>문버디 스코어<div className={style.real_moonscore}>(88.27)</div></div>
+                        <div className={style.title}>문버디 스코어<div className={style.real_moonscore}>{A.score}</div></div>
                     </div>
                     {/* 성분 파트 */}
                     <div className={style.Section2}>
                         <div className={style.title}><h4>성분</h4> 성분을 클릭하면 자세한 설명이 나옵니다.</div>
-                        {/* <div className={style.Ingredi_container}><IngrediList ingredients={Ingri_ModalData} handleOpen={INhandleOpen} /></div> */}
                         <IngrediList ingredients={Ingri_ModalData} handleOpen={INhandleOpen} />
                     </div>
                     <ModalComponent
@@ -198,10 +260,50 @@ const IngredientAnalysis = () => {
                     style={{ fontFamily: '"Aoboshi One", serif', marginBottom: '2rem' }}
                 >
                     <Tab eventKey="home" title="특징">
-                        <img src={"/imgs/ProductFeatures/건강한 순수한면.jpg"} />
+                        <img src={A.product_info_image} />
                     </Tab>
                     <Tab eventKey="profile" title="리뷰">
-                        시장합시다 컴포넌트 추가
+                        {/* <div className={style2.commentList}>
+                            <hr className={style2.h2} />
+                            {comments?.map((c) => {
+                                return (
+                                    <div
+                                        style={{
+                                            marginTop: "28px",
+                                        }}
+                                    >
+                                        <ReviewComment
+                                            parentId={parentId}
+                                            setParentId={setParentId}
+                                            {...c}
+                                        ></ReviewComment>
+                                        <div
+                                            style={{
+                                                marginLeft: "69px",
+                                                marginTop: "28px",
+                                            }}
+                                        >
+                                            {c.children.map((rC) => {
+                                                return <ReviewComment {...rC}></ReviewComment>;
+                                            })}
+                                        </div>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                        <div className={style2.commentBox}>
+                            <input
+                                onKeyDown={(e) => {
+                                    if (e.key === "Enter") {
+                                        createComment(content);
+                                    }
+                                }}
+                                onChange={(e) => setContent(e.target.value)}
+                                placeholder="댓글 달기"
+                                className={style2.commentInput}
+                            ></input>
+                            <div className={style2.margin_div}></div>
+                        </div> */}
                     </Tab>
                 </Tabs>
 

@@ -163,7 +163,7 @@ export default function Analyze() {
             productUp.map((product, index) => (
               <div className="imgBox" key={index}>
                 <Link to={`/analyze/${index + 1}`} key={index}>
-                  <img src={product.picture} alt={product.name} />
+                  <img src={product.product_image} alt={product.name} />
                 </Link>
 
                 <div style={{ fontSize: "15px" }}>{product.brand}</div>
@@ -179,7 +179,7 @@ export default function Analyze() {
             productDown.map((product, index) => (
               <div className="imgBox" key={index}>
                 <Link to={`/analyze/${index + 1}`} key={index}>
-                  <img src={product.picture} alt={product.name} />
+                  <img src={product.product_image} alt={product.name} />
                 </Link>
 
                 <div style={{ fontSize: "15px" }}>{product.brand}</div>
