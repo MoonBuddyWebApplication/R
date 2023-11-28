@@ -43,6 +43,11 @@ h3 {
     font-size: 30px;
 }
 
+.real_moonscore {
+    color: #330075;
+    font-weight: bold;
+}
+
 /* section2 관련 */
 .Section2 {
     width: 590px;

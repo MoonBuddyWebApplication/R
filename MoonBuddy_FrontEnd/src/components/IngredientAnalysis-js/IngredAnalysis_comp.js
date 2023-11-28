@@ -14,21 +14,6 @@ import { product_id } from '../Api/api';
 // import axios from 'axios';
 import { useParams } from "react-router-dom";
 
-//[인증마크]모달 데이터 관리
-const ModalData = [
-    {
-        title: "Orgainc 100",
-        description: "100% 유기농 순면 커버.3년 이상 화학비료를 사용하지 않은 토양에서 자란 원료로 모든 유기농 기준을 준수했을 때 받을 수 있는 국제 인증",
-    },
-    {
-        title: "FDA",
-        description: "FDAFDAFDAFDAFDAFDA... (내용 생략)",
-    },
-    {
-        title: "더마테스트",
-        description: "1더마테스트더마테스트... (내용 생략)",
-    },
-];
 //[인증마크]모달 스타일 설정
 const ModalStyle = {
     position: 'absolute',
@@ -121,7 +106,7 @@ const IngredientAnalysis = () => {
     };
     console.log(res?.data); //옵셔널 체이닝
     const A = res?.data || [];
-
+    console.log(A.markList);
     //리뷰 댓글
     // const { boardId } = useParams();
     // const [content, setContent] = useState();
@@ -211,13 +196,15 @@ const IngredientAnalysis = () => {
                 <div className={style.RightArea_IngredientInfo}>
                     {/* 문버디스코어 파트 */}
                     <div className={style.Section1}>
-                        <img src={"/imgs/MoonScore.png"} alt="문버디 스코어" height="100px" />
-                        <div className={style.title}>문버디 스코어<div className={style.real_moonscore}>{A.score}</div></div>
+                        <img src={"/imgs/MoonScore.png"} alt="문버디 스코어" height="100px" style={{
+                            color: '#330075', fontWeight: 'bold'
+                        }} />
+                        < div className={style.title} > 문버디 스코어<div className={style.real_moonscore} > {A.score}</div></div>
                     </div>
                     {/* 성분 파트 */}
                     <div className={style.Section2}>
                         <div className={style.title}><h4>성분</h4> 성분을 클릭하면 자세한 설명이 나옵니다.</div>
-                        <IngrediList ingredients={Ingri_ModalData} handleOpen={INhandleOpen} />
+                        {A.ingredientList && <IngrediList ingredients={A.ingredientList} handleOpen={INhandleOpen} />}
                     </div>
                     <ModalComponent
                         open={INopenModal}
@@ -229,18 +216,18 @@ const IngredientAnalysis = () => {
                     <div className={style.Section3}>
                         <div className={style.title}><h4>인증마크</h4>마크를 클릭하면 자세한 설명이 나옵니다.</div>
                         <div style={{ display: 'flex' }}>
-                            {ModalData.map((data, index) => (
+                            {A.markList && A.markList.map((data, index) => (
                                 <div key={index}>
                                     <Button onClick={() => handleOpen(index)}>
-                                        <img src={"/imgs/Marks/Mark" + `${index + 1}` + ".png"} height="100px" />
+                                        <img src={data.image} height="100px" />
                                     </Button>
-                                    <Modal open={openModal && currentModalIndex === index} onClose={handleClose} aria-labelledby={`modal-Mark${index + 1}-title`} aria-describedby={`modal-Mark${index + 1}-description`}>
+                                    <Modal open={openModal && currentModalIndex === index} onClose={handleClose} aria-labelledby={data.name} aria-describedby={data.explanation}>
                                         <Box sx={ModalStyle}>
-                                            <Typography id={`modal-Mark${index + 1}-title`} variant="h6" component="h1">
-                                                {data.title}
+                                            <Typography id={data.name} variant="h6" component="h1">
+                                                {data.name}
                                             </Typography>
-                                            <Typography id={`modal-Mark${index + 1}-descrip tion`} sx={{ mt: 2 }}>
-                                                {data.description}
+                                            <Typography id={data.explanation} sx={{ mt: 2 }}>
+                                                {data.explanation}
                                             </Typography>
                                         </Box>
                                     </Modal>
