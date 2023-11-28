@@ -1,6 +1,5 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Mainpage from "./pages/Mainpage";
 import Community from "./pages/Community";
@@ -13,6 +12,7 @@ import MyPage from "./pages/MyPage";
 import CommunityMini from "./pages/CommunityMini";
 import NewsDetail from "./pages/NewsDetail";
 import ModifyMe from "./pages/ModifyMe";
+import ModifyRate from "./pages/ModifyRate";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -58,6 +58,10 @@ const router = createBrowserRouter([
   {
     path: "/modifyme",
     element: <ModifyMe />,
+  },
+  {
+    path: "/modifyrate",
+    element: <ModifyRate />,
   },
 ]);
 
