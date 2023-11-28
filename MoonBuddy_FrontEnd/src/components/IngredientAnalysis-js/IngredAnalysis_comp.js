@@ -197,7 +197,7 @@ const IngredientAnalysis = () => {
                     {/* 문버디스코어 파트 */}
                     <div className={style.Section1}>
                         <img src={"/imgs/MoonScore.png"} alt="문버디 스코어" height="100px" />
-                        <div className={style.title}>문버디 스코어<div className={style.real_moonscore} style={{ color: '#330075', fontWeight: 'bold' }}>{A.score}</div></div>
+                        <div className={style.title}>문버디 스코어<div className={style.real_moonscore}>{A.score}</div></div>
                     </div>
                     {/* 성분 파트 */}
                     <div className={style.Section2}>
