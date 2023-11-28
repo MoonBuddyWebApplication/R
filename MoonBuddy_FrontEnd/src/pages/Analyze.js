@@ -46,6 +46,9 @@ export default function Analyze() {
       font-size: 10px;
       margin-top: 14px;
       height: 100px;
+      span{
+        cursor: pointer;
+      }
     }
 
     .displayBar {
@@ -155,7 +158,7 @@ export default function Analyze() {
           <span onClick={() => handleSort("up")}> 오름차순 |</span>
           <span onClick={() => handleSort("down")}> 내림차순</span>
           <div style={{ marginTop: "14px", fontSize: "20px" }}>
-            {arrLen}개의 게시물
+            {A.length}개의 게시물
           </div>
         </div>
         <div className="displayBar">
