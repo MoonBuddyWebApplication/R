@@ -26,34 +26,29 @@ const ModalStyle = {
     boxShadow: 10,
     p: 6,
 };
-//[성분]모달 데이터 관리
-const Ingri_ModalData = [
-    {
-        title: "폴리에틸렌폴리프로필렌복합섬유",
-        description: "폴리에틸렌 폴리프로필렌(PE/PP) 복합섬유는 두 가지 주요 열가소성 섬유, 즉 폴리에틸렌(PE)과 폴리프로필렌(PP)을 혼합하여 만든 섬유입니다.         각각의 섬유는 고온에도 녹지 않고, 내화학적 안정성이 뛰어나며 특정 환경에서의 내구성이 좋다는 특징을 가지고 있습니다."
-    },
-    {
-        title: "올레핀중합체",
-        description: "올레핀중합체의 상세 설명",
-    },
-    {
-        title: "면상펄프",
-        description: "면상펄프는 종이와 관련된 제품을 만드는 데 사용되는 주 원료 중 하나입니다. 이것은 주로 목재에서 만들어지는 파우더 상태의 목재 섬유입니다.면상펄프는 주로 목재를 가공하여 나온 목재 파우더나 섬유를 물에 풀어 만든 것입니다. 이 과정에서 나무의 섬유들이 분해되어 물에 떠다니게 되며, 이를 형태에 맞게 압축하고 건조하여 종이나 다른 종이 관련 제품을 만드는 데 사용됩니다.",
-    },
-];
 
-const ModalComponent = ({ open, onClose, title, description }) => {
+const ModalComponent = ({ data, open, onClose }) => {
     return (
-        <Modal open={open} onClose={onClose} aria-labelledby={`modal-title`} aria-describedby={`modal-description`}>
-            <Box sx={ModalStyle}>
-                <Typography id={`modal-title`} variant="h6" component="h1">
-                    {title}
-                </Typography>
-                <Typography id={`modal-description`} sx={{ mt: 2 }}>
-                    {description}
-                </Typography>
-            </Box>
-        </Modal>
+        <>
+            {data.map((D, index) => (
+                <Modal
+                    key={index}
+                    open={open === index}
+                    onClose={onClose}
+                    aria-labelledby={D.title}
+                    aria-describedby={D.description}
+                >
+                    <Box sx={ModalStyle}>
+                        <Typography id={D.title} variant="h6" component="h1">
+                            {D.title}
+                        </Typography>
+                        <Typography id={D.description} sx={{ mt: 2 }}>
+                            {D.description}
+                        </Typography>
+                    </Box>
+                </Modal>
+            ))}
+        </>
     );
 };
 const IngrediList = ({ ingredients, handleOpen }) => {
@@ -85,7 +80,7 @@ const IngredientAnalysis = () => {
     //성분창 모달 관련
     const INhandleOpen = (index) => {
         setINModalIndex(index);
-        INsetOpenModal(true);
+        INsetOpenModal(index);
     };
     const INhandleClose = () => {
         INsetOpenModal(false);
@@ -100,13 +95,12 @@ const IngredientAnalysis = () => {
 
 
     const getData = async () => {
-        const response = await product_id(detail); //해당id값을 어케 받을지 고민
+        const response = await product_id(detail);
         setRes(response);
         console.log(res);
     };
     console.log(res?.data); //옵셔널 체이닝
     const A = res?.data || [];
-    console.log(A.markList);
     //리뷰 댓글
     // const { boardId } = useParams();
     // const [content, setContent] = useState();
@@ -182,13 +176,13 @@ const IngredientAnalysis = () => {
                 {/* A.map((P, index) => {}); */}
                 <div className={style.LeftArea_ProductInfo}>
                     <div>
-                        <img src={A.product_image} alt={A.name} />
+                        <img src={A.product_image} alt={A.name} height='500px' />
                     </div>
                     <div className={style.LeftBotton}>
                         <div>
                             <p className={style.brand}>{A.brand}</p>
                             <p className={style.name}><h3>{A.name}</h3></p>
-                            <p className={style.price}>{A.price}원</p>
+                            <p className={style.price}>{A.product_price}원</p>
                         </div>
                         <AiOutlineShareAlt size={25} />
                     </div>
@@ -204,12 +198,13 @@ const IngredientAnalysis = () => {
                         <div className={style.title}><h4>성분</h4> 성분을 클릭하면 자세한 설명이 나옵니다.</div>
                         {A.ingredientList && <IngrediList ingredients={A.ingredientList} handleOpen={INhandleOpen} />}
                     </div>
-                    <ModalComponent
+                    {A.ingredientList && <ModalComponent
+                        data={A.ingredientList}
                         open={INopenModal}
                         onClose={INhandleClose}
-                        title={Ingri_ModalData[INModalIndex]?.title}
-                        description={Ingri_ModalData[INModalIndex]?.description}
-                    />
+                        title={A.ingredientList.title}
+                        description={A.ingredientList.description}
+                    />}
                     {/* 인증마크 파트 */}
                     <div className={style.Section3}>
                         <div className={style.title}><h4>인증마크</h4>마크를 클릭하면 자세한 설명이 나옵니다.</div>
