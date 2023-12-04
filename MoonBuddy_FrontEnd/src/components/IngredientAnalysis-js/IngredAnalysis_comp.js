@@ -196,7 +196,9 @@ const IngredientAnalysis = () => {
                     {/* 성분 파트 */}
                     <div className={style.Section2}>
                         <div className={style.title}><h4>성분</h4> 성분을 클릭하면 자세한 설명이 나옵니다.</div>
-                        {A.ingredientList && <IngrediList ingredients={A.ingredientList} handleOpen={INhandleOpen} />}
+                        <div className={style.ListContainer}>
+                            {A.ingredientList && <IngrediList ingredients={A.ingredientList} handleOpen={INhandleOpen} />}
+                        </div>
                     </div>
                     {A.ingredientList && <ModalComponent
                         data={A.ingredientList}
