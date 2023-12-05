@@ -80,13 +80,10 @@ const Finder = styled.div`
 export default function Login() {
   const Loginapi = () => {
     axios
-      .post(
-        "https://port-0-moonbuddy-spring-euegqv2lloic2m5c.sel5.cloudtype.app/auth",
-        {
-          username: userId,
-          password: userPw,
-        }
-      )
+      .post("https://api.domarketdodo.shop/auth", {
+        username: userId,
+        password: userPw,
+      })
       .then((res) => {
         console.log("res", res);
       })

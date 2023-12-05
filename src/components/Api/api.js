@@ -1,8 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL:
-    "https://port-0-moonbuddy-spring-euegqv2lloic2m5c.sel5.cloudtype.app" /*
+  baseURL: "https://api.domarketdodo.shop" /*
   baseURL : url을 상대경로로 쓸대 url 맨 앞에 붙는 주소.
     예를들어, url이 /post 이고 baseURL이 https://some-domain.com/api/ 이면,
     https://some-domain.com/api/post로 요청 가게 된다.*/,
