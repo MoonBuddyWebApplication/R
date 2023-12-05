@@ -98,7 +98,7 @@ export default function Login() {
   };
   const [userPw, setUserPw] = useState("");
   const handlePwChange = (e) => {
-    setUserId(e.target.value);
+    setUserPw(e.target.value);
   };
   return (
     <div>
