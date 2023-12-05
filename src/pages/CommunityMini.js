@@ -109,6 +109,23 @@ export default function CommunityMini({ props }) {
   const firstData = res?.data[0];
   const Data = res?.data;
   console.log(firstData);
+  const PostBtn = () => {
+    axios
+      .post(
+        "https://port-0-moonbuddy-spring-euegqv2lloic2m5c.sel5.cloudtype.app/reply/post",
+        {
+          userId: id,
+          boardId: 1,
+          comment: inputText,
+        }
+      )
+      .then((res) => {
+        console.log("성공");
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }; // api.get 자체가 동기코드
 
   return (
     <Container>
@@ -145,7 +162,7 @@ export default function CommunityMini({ props }) {
         <div className="nick">유저 닉네임</div>
         <input type="text" placeholder="댓글을 입력해주세요"></input>
         <div className="registerBtn">
-          <button>등록</button>
+          <button onClick={PostBtn}>등록</button>
         </div>
       </div>
     </Container>
