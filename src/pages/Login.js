@@ -3,8 +3,9 @@ import styled from "styled-components";
 import NavigatorMain from "../components/Main-js/Navigator_main";
 import Navitgator1 from "../components/Main-js/Navitgator1";
 import { Link } from "react-router-dom";
-import { login } from "../components/Api/api";
+import { loginapi } from "../components/Api/api";
 import { useState } from "react";
+import axios from "axios";
 const IdandPwDiv = styled.div`
   @import url("https://fonts.googleapis.com/css2?family=Aoboshi+One&family=Gugi&family=Noto+Serif+KR:wght@200&display=swap");
   font-family: "Aoboshi One", serif;
@@ -77,21 +78,23 @@ const Finder = styled.div`
 `;
 
 export default function Login() {
-  // React.useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await login();
-  //       console.log("응답 데이터:", response.data);
-  //       // 로그인 성공 후 필요한 작업 수행
-  //     } catch (error) {
-  //       // 에러 처리
-  //       // console.error("로그인 실패:", error);
-  //       console.error("에러 발생:", error);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, []);
+  const Loginapi = () => {
+    axios
+      .post(
+        "https://port-0-moonbuddy-spring-euegqv2lloic2m5c.sel5.cloudtype.app/auth",
+        {
+          userId: userId,
+          userPw: userPw,
+        }
+      )
+      .then((res) => {
+        console.log("res", res);
+      })
+      .catch((error) => {
+        console.error("Error:", error.response.data.message);
+        alert(error.response.data.message);
+      });
+  }; // api.get 자체가 동기코드
   const [userId, setUserId] = useState("");
   const handleIdChange = (e) => {
     setUserId(e.target.value);
@@ -119,7 +122,7 @@ export default function Login() {
         <IdandPwInput>
           <input
             type="text"
-            placeholder="아이디를 입력하세요"
+            placeholder="비밀번호를 입력하세요"
             value={userPw}
             onChange={handlePwChange}
           ></input>
@@ -146,7 +149,7 @@ export default function Login() {
             marginTop: "86px",
           }}
         >
-          <LoginBtn>로그인</LoginBtn>
+          <LoginBtn onClick={Loginapi}>로그인</LoginBtn>
         </div>
       </IdandPwDiv>
     </div>
