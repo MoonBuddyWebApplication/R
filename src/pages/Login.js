@@ -78,6 +78,7 @@ const Finder = styled.div`
 `;
 
 export default function Login() {
+  axios.defaults.withCredentials = true;
   const Loginapi = () => {
     axios
       .post("https://api.domarketdodo.shop/auth", {
