@@ -10,6 +10,7 @@ import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { product_id } from '../Api/api';
+import axios from 'axios';
 
 // import axios from 'axios';
 import { useParams } from "react-router-dom";
@@ -62,6 +63,7 @@ const IngrediList = ({ ingredients, handleOpen }) => {
 };
 
 const IngredientAnalysis = () => {
+    axios.defaults.withCredentials = true;
     const [openModal, setOpenModal] = useState(false);
     const [currentModalIndex, setCurrentModalIndex] = useState(0);
 
