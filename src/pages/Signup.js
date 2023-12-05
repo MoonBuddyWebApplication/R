@@ -190,14 +190,14 @@ export default function Signup() {
       .post(
         "https://port-0-moonbuddy-spring-euegqv2lloic2m5c.sel5.cloudtype.app/user/create",
         {
-          userId: "dkdkdk",
-          pw: "dodod",
-          nickName: "leechangkyu",
-          absorb: 20,
-          humidity: 20,
-          satisfaction: 10,
-          safety: 30,
-          price: 20,
+          userId: userId,
+          pw: pw,
+          nickName: nickName,
+          absorb: absorb,
+          humidity: humidity,
+          satisfaction: satisfaction,
+          safety: safety,
+          price: price,
         }
       )
       .then((res) => {
@@ -207,7 +207,6 @@ export default function Signup() {
         console.error("Error:", error.response.data.message);
         alert(error.response.data.message);
       });
-    document.location.href = "/";
   }; // api.get 자체가 동기코드
 
   const userData = {

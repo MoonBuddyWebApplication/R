@@ -83,8 +83,8 @@ export default function Login() {
       .post(
         "https://port-0-moonbuddy-spring-euegqv2lloic2m5c.sel5.cloudtype.app/auth",
         {
-          userId: userId,
-          userPw: userPw,
+          username: userId,
+          password: userPw,
         }
       )
       .then((res) => {
