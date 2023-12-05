@@ -14,7 +14,7 @@ import axios from 'axios';
 
 // import axios from 'axios';
 import { useParams } from "react-router-dom";
-
+axios.defaults.withCredentials = true;
 //[인증마크]모달 스타일 설정
 const ModalStyle = {
     position: 'absolute',
@@ -97,7 +97,7 @@ const IngredientAnalysis = () => {
 
 
     const getData = async () => {
-        axios.defaults.withCredentials = true;
+        // axios.defaults.withCredentials = true;
         const response = await product_id(detail);
         setRes(response);
         console.log(res);
