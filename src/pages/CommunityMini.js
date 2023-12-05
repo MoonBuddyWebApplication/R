@@ -118,14 +118,11 @@ export default function CommunityMini({ props }) {
   console.log(firstData);
   const PostBtn = () => {
     axios
-      .post(
-        "https://port-0-moonbuddy-spring-euegqv2lloic2m5c.sel5.cloudtype.app/reply/post",
-        {
-          userId: id,
-          boardId: 1,
-          comment: inputText,
-        }
-      )
+      .post("https://api.domarketdodo.shop/reply/post", {
+        userId: id,
+        boardId: 1,
+        comment: inputText,
+      })
       .then((res) => {
         console.log("성공");
       })

@@ -187,19 +187,16 @@ export default function Signup() {
   };
   const SignUpBtn = () => {
     axios
-      .post(
-        "https://port-0-moonbuddy-spring-euegqv2lloic2m5c.sel5.cloudtype.app/user/create",
-        {
-          userId: userId,
-          pw: pw,
-          nickName: nickName,
-          absorb: absorb,
-          humidity: humidity,
-          satisfaction: satisfaction,
-          safety: safety,
-          price: price,
-        }
-      )
+      .post("https://api.domarketdodo.shop/user/create", {
+        userId: userId,
+        pw: pw,
+        nickName: nickName,
+        absorb: absorb,
+        humidity: humidity,
+        satisfaction: satisfaction,
+        safety: safety,
+        price: price,
+      })
       .then((res) => {
         console.log("res", res);
       })
