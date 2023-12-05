@@ -196,19 +196,13 @@ export default function ModifyRate() {
       // 예: 회원가입 요청 등
       console.log("비밀번호 일치");
       axios
-        .post(
-          "https://port-0-moonbuddy-spring-euegqv2lloic2m5c.sel5.cloudtype.app/user/create",
-          {
-            userId: "dkdkdk",
-            pw: "dodod",
-            nickName: "leechangkyu",
-            absorb: 20,
-            humidity: 20,
-            satisfaction: 10,
-            safety: 30,
-            price: 20,
-          }
-        )
+        .post("https://api.domarketdodo.shop/user/create", {
+          absorb: absorb,
+          humidity: humidity,
+          satisfaction: satisfaction,
+          safety: safety,
+          price: price,
+        })
         .then((res) => {
           console.log("res", res);
         })
@@ -220,17 +214,6 @@ export default function ModifyRate() {
       document.location.href = "/";
     }
   }; // api.get 자체가 동기코드
-
-  const userData = {
-    userId: userId,
-    pw: pw,
-    nickName: nickName,
-    absorb: absorb,
-    humidity: humidity,
-    satisfaction: satisfaction,
-    safety: safety,
-    price: price,
-  };
 
   return (
     <div>

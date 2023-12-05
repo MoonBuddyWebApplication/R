@@ -46,7 +46,6 @@ const router = createBrowserRouter([
     path: "/analyze/:detail",
     element: <IngredAnalysis_comp />,
   },
-
   {
     path: "/mypage",
     element: <MyPage />,

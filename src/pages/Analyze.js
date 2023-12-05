@@ -135,7 +135,7 @@ export default function Analyze() {
           {sortBy === "popular" &&
             productUp.map((product, index) => (
               <div className="imgBox" key={index}>
-                <Link to={`/analyze/${index + 1}`} key={index}>
+                <Link to={`/analyze/${product.product_id}`} key={index}>
                   <img src={product.product_image} alt={product.name} />
                 </Link>
 
@@ -151,7 +151,7 @@ export default function Analyze() {
           {sortBy === "down" &&
             productDown.map((product, index) => (
               <div className="imgBox" key={index}>
-                <Link to={`/analyze/${index + 1}`} key={index}>
+                <Link to={`/analyze/${product.product_id}`} key={index}>
                   <img src={product.product_image} alt={product.name} />
                 </Link>
 
@@ -167,7 +167,7 @@ export default function Analyze() {
           {sortBy === "up" &&
             productUp.map((product, index) => (
               <div className="imgBox" key={index}>
-                <Link to={`/analyze/${index + 1}`} key={index}>
+                <Link to={`/analyze/${product.product_id}`} key={index}>
                   <img src={product.product_image} alt={product.name} />
                 </Link>
 
@@ -183,7 +183,7 @@ export default function Analyze() {
           {sortBy === "release" &&
             productRelease.map((product, index) => (
               <div className="imgBox" key={index}>
-                <Link to={`/analyze/${index + 1}`} key={index}>
+                <Link to={`/analyze/${product.product_id}`} key={index}>
                   <img src={product.product_image} alt={product.name} />
                 </Link>
 
