@@ -51,21 +51,21 @@ export default function News() {
   const newsData = [
     {
       title: "세계 월경의 날: 월경에 대한 5가지 오해",
-      summary: "호호",
+      summary: "김 섭",
       date: "2023-10-29",
       image: "imgs/News1 (1).png",
       popularity: "90",
     },
     {
       title: "‘욱씬욱씬 생리통’ 가만히 둬도 괜찮을까?",
-      summary: "인생은",
+      summary: "손락훈",
       date: "2023-10-29",
       image: "imgs/News1 (2).png",
       popularity: "80",
     },
     {
       title: "피임약: 피임약의 이상한 진실",
-      summary: "달구나",
+      summary: "Zaria Gorvett",
       date: "2023-10-29",
       image: "imgs/News1 (3).png",
       popularity: "100",
@@ -98,11 +98,11 @@ export default function News() {
               </Link>
 
               <div className="divSector">
-                <div style={{ fontSize: "48px" }}>{news.title}</div>
-                <div style={{ fontSize: "32px", marginTop: "9px" }}>
+                <div style={{ fontSize: "33px" }}>{news.title}</div>
+                <div style={{ fontSize: "24px", marginTop: "9px" }}>
                   {news.summary}
                 </div>
-                <div style={{ fontSize: "20px", marginTop: "9px" }}>
+                <div style={{ fontSize: "18px", marginTop: "9px" }}>
                   {news.date}
                 </div>
               </div>
