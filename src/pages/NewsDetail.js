@@ -97,7 +97,11 @@ export default function NewsDetail() {
         <div className="middleSector">
           <div className="sectorImg">
             {selectedNews.images.map((image, index) => (
-              <img key={index} src={image} alt={`img-${index}`} />
+              <img
+                key={index}
+                src={process.env.PUBLIC_URL + image}
+                alt={`img-${index}`}
+              />
             ))}
           </div>
           <div className="sectorWord">{selectedNews.content}</div>
