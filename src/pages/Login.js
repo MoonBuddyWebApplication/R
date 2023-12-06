@@ -80,7 +80,7 @@ const Finder = styled.div`
 export default function Login() {
   const Loginapi = () => {
     axios
-      .post("https://api.domarketdodo.shop/auth", {
+      .post("/auth", {
         username: userId,
         password: userPw,
       })
