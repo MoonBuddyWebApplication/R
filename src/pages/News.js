@@ -53,21 +53,21 @@ export default function News() {
       title: "세계 월경의 날: 월경에 대한 5가지 오해",
       summary: "김 섭",
       date: "2023-10-29",
-      image: "imgs/News1 (1).png",
+      image: "imgs/News1.png",
       popularity: "90",
     },
     {
       title: "‘욱씬욱씬 생리통’ 가만히 둬도 괜찮을까?",
       summary: "손락훈",
       date: "2023-10-29",
-      image: "imgs/News1 (2).png",
+      image: "imgs/News2.png",
       popularity: "80",
     },
     {
       title: "피임약: 피임약의 이상한 진실",
       summary: "Zaria Gorvett",
       date: "2023-10-29",
-      image: "imgs/News1 (3).png",
+      image: "imgs/News3.png",
       popularity: "100",
     },
 
@@ -94,7 +94,7 @@ export default function News() {
           {newsData.map((news, index) => (
             <ImgBox>
               <Link to={`/news/${index + 1}`} key={index}>
-                <img src={news.image} alt="img" />
+                <img src={process.env.PUBLIC_URL + news.image} alt="img" />
               </Link>
 
               <div className="divSector">

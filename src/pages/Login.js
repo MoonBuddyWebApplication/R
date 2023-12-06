@@ -81,7 +81,7 @@ export default function Login() {
   axios.defaults.withCredentials = true;
   const Loginapi = () => {
     axios
-      .post("/auth", {
+      .post("https://api.domarketdodo.shop/auth", {
         username: userId,
         password: userPw,
       })
