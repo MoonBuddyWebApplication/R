@@ -196,19 +196,16 @@ export default function ModifyMe() {
       // 예: 회원가입 요청 등
       console.log("비밀번호 일치");
       axios
-        .post(
-          "https://port-0-moonbuddy-spring-euegqv2lloic2m5c.sel5.cloudtype.app/user/create",
-          {
-            userId: "dkdkdk",
-            pw: "dodod",
-            nickName: "leechangkyu",
-            absorb: 20,
-            humidity: 20,
-            satisfaction: 10,
-            safety: 30,
-            price: 20,
-          }
-        )
+        .post("https://api.domarketdodo.shop/user", {
+          userId: "dkdkdk",
+          pw: "dodod",
+          nickName: "leechangkyu",
+          absorb: 20,
+          humidity: 20,
+          satisfaction: 10,
+          safety: 30,
+          price: 20,
+        })
         .then((res) => {
           console.log("res", res);
         })
@@ -240,21 +237,6 @@ export default function ModifyMe() {
       <StyledJoin>
         <div>
           <div className={"join"}>회원가입 수정</div>
-
-          <div className={"joinCompo"}>
-            <div className={"joinBar"}>
-              <div className={"name"}>이름</div>
-              <div className={"content"}>
-                <input
-                  type="text"
-                  placeholder="이름을 입력하세요"
-                  // value={userName}
-                  // onChange={handleUserNameChange}
-                ></input>
-              </div>
-            </div>
-            <hr></hr>
-          </div>
 
           <div className={"joinCompo"}>
             <div className={"joinBar"}>

@@ -160,18 +160,7 @@ export default function ModifyRate() {
   const [safety, setSafety] = useState(0);
   const [price, setPrice] = useState(0);
   const [isError, setIsError] = useState(false);
-  const handleIdChange = (e) => {
-    setUserId(e.target.value);
-  };
-  const handlePwChange = (e) => {
-    setPw(e.target.value);
-  };
-  const handlePwConfirmChange = (e) => {
-    setPwConfirm(e.target.value);
-  };
-  const handleNickChange = (e) => {
-    setNickName(e.target.value);
-  };
+
   const handleAbsorbChange = (e) => {
     setAbsorb(e.target.value);
   };
@@ -196,12 +185,14 @@ export default function ModifyRate() {
       // 예: 회원가입 요청 등
       console.log("비밀번호 일치");
       axios
-        .post("https://api.domarketdodo.shop/user/create", {
-          absorb: absorb,
-          humidity: humidity,
-          satisfaction: satisfaction,
-          safety: safety,
-          price: price,
+        .post("https://api.domarketdodo.shop/user/update", {
+          criterionDTO: {
+            absorb: absorb,
+            humidity: humidity,
+            satisfaction: satisfaction,
+            safety: safety,
+            price: price,
+          },
         })
         .then((res) => {
           console.log("res", res);
@@ -210,8 +201,6 @@ export default function ModifyRate() {
           console.error("Error:", error.response.data.message);
           alert(error.response.data.message);
         });
-
-      document.location.href = "/";
     }
   }; // api.get 자체가 동기코드
 
