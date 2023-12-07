@@ -6,6 +6,7 @@ import Navitgator1 from "../components/Main-js/Navitgator1";
 import { SignUpApi } from "../components/Api/api";
 import { useEffect } from "react";
 import axios from "axios";
+axios.defaults.withCredentials = true;
 const StyledButton = styled.div`
   background-color: #c7a2f8;
   width: 100%;

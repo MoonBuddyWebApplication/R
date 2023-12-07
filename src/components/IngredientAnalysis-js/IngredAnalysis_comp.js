@@ -10,10 +10,11 @@ import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { product_id } from '../Api/api';
+import axios from 'axios';
 
 // import axios from 'axios';
 import { useParams } from "react-router-dom";
-
+axios.defaults.withCredentials = true;
 //[인증마크]모달 스타일 설정
 const ModalStyle = {
     position: 'absolute',
@@ -62,6 +63,7 @@ const IngrediList = ({ ingredients, handleOpen }) => {
 };
 
 const IngredientAnalysis = () => {
+    // axios.defaults.withCredentials = true;
     const [openModal, setOpenModal] = useState(false);
     const [currentModalIndex, setCurrentModalIndex] = useState(0);
 
@@ -95,6 +97,7 @@ const IngredientAnalysis = () => {
 
 
     const getData = async () => {
+        // axios.defaults.withCredentials = true;
         const response = await product_id(detail);
         setRes(response);
         console.log(res);

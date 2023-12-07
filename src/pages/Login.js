@@ -89,6 +89,7 @@ const LogOutBtn = styled.button`
 `;
 
 export default function Login() {
+  axios.defaults.withCredentials = true;
   const Loginapi = () => {
     axios
       .post(
@@ -130,6 +131,7 @@ export default function Login() {
     // 로그아웃 버튼을 누르면 실행되는 함수
     removeCookie("access_token"); // 쿠키삭제후
     removeCookie("JSESSIONID");
+
   };
   return (
     <div>
