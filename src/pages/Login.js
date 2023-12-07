@@ -125,11 +125,12 @@ export default function Login() {
   const handlePwChange = (e) => {
     setUserPw(e.target.value);
   };
-  const COOKIE_KEY = window.LOGIN_KEY;
-  const [, , removeCookie] = useCookies([COOKIE_KEY]);
+  const [cookies, setCookie, removeCookie] = useCookies(["access_token"]);
+
   const handleLogout = () => {
     // 로그아웃 버튼을 누르면 실행되는 함수
-    removeCookie(COOKIE_KEY, { path: "/" }); // 쿠키삭제후
+    removeCookie("access_token"); // 쿠키삭제후
+    removeCookie("JSESSIONID");
     window.location.href = "/"; // 현재url을 변경해준다.
   };
   return (
