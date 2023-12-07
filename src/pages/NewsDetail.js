@@ -119,7 +119,7 @@ export default function NewsDetail() {
             {selectedNews.images.map((image, index) => (
               <img
                 key={index}
-                src={process.env.PUBLIC_URL + image}
+                src={image}
                 alt={`img-${index}`}
               />
             ))}
