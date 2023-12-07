@@ -3,7 +3,7 @@ import styled from "styled-components";
 export default function ChatComponent({ props }) {
   const goodLen = 15;
   const comLen = 3;
-  const { content, title, writer } = props;
+  const { content, title, writer, likes } = props;
   const Chat = styled.div`
     width: 1320px;
     height: 240px;
@@ -38,7 +38,7 @@ export default function ChatComponent({ props }) {
             src="/imgs/Good.png"
             style={{ width: "30px", height: "30px" }}
           ></img>
-          {goodLen}
+          {likes}
         </div>
         <div>
           <img

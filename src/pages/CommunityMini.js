@@ -49,6 +49,7 @@ const Container = styled.div`
   .replyGet {
     border: solid black;
     height: fit-content;
+    margin-bottom: 10px;
     font-size: 24px;
     display: flex;
     flex-direction: column;
@@ -95,9 +96,8 @@ const Sector = styled.div`
     margin: 10px 0; /* 원하는 간격으로 조절 */
   }
 `;
-export default function CommunityMini({ props }) {
+export default function CommunityMini({}) {
   const [inputText, setText] = useState("");
-  const { id } = useParams();
   const [res, setRes] = useState();
   const handleTextChange = (e) => {
     setText(e.target.value);
@@ -112,24 +112,27 @@ export default function CommunityMini({ props }) {
     setRes(response);
     console.log(res);
   };
-  console.log(res);
+
   const firstData = res?.data[0];
   const Data = res?.data;
-  console.log(firstData);
-  const PostBtn = () => {
-    axios
-      .post("https://api.domarketdodo.shop/reply/post", {
-        userId: id,
-        boardId: 1,
+  console.log(Data);
+
+  const { boardId } = useParams(); // 보드 uri 가져오기
+  const PostBtn = async () => {
+    try {
+      await axios.post("https://api.domarketdodo.shop/reply/post", {
+        userId: boardId, // 일단 boardId로
+        boardId: boardId,
         comment: inputText,
-      })
-      .then((res) => {
-        console.log("성공");
-      })
-      .catch((error) => {
-        console.error("Error:", error);
       });
-  }; // api.get 자체가 동기코드
+
+      // 댓글이 등록된 후에 최신 데이터를 다시 가져옴
+      await getData();
+      console.log("댓글이 등록되었습니다.");
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
 
   return (
     <Container>
@@ -152,15 +155,16 @@ export default function CommunityMini({ props }) {
       </Sector>
 
       {Data && (
-        <div className="replyGet">
-          {Data.map((varId) => (
-            <div key={varId.id}>
-              <div className="nickGet">{varId?.replyList[0].nickname}</div>
-              <div>{varId?.replyList[0].comment}</div>
+        <div>
+          {Data[0].replyList.map((varId) => (
+            <div className="replyGet" key={varId.boardId}>
+              <div className="nickGet">{varId?.nickname}</div>
+              <div>{varId?.comment}</div>
             </div>
           ))}
         </div>
       )}
+
       <hr />
       <div className="replyInput">
         <div className="nick">유저 닉네임</div>
