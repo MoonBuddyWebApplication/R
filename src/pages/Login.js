@@ -89,6 +89,7 @@ const LogOutBtn = styled.button`
 `;
 
 export default function Login() {
+  axios.defaults.withCredentials = true;
   const Loginapi = () => {
     axios
       .post(

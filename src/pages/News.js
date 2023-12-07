@@ -1,9 +1,9 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import NavigatorMain from "../components/Main-js/Navigator_main";
 import styled from "styled-components";
 import Navigator1 from "../components/Main-js/Navitgator1";
 import { Link } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import { useState } from "react";
 export default function News() {
   const Container = styled.div`
     @import url("https://fonts.googleapis.com/css2?family=Aoboshi+One&family=Gugi&family=Noto+Serif+KR:wght@200&display=swap");
@@ -52,49 +52,70 @@ export default function News() {
     {
       title: "세계 월경의 날: 월경에 대한 5가지 오해",
       summary: "김 섭",
-      date: "2023-10-29",
+      date: "2019-05-28",
       image: "imgs/News1.png",
       popularity: "90",
     },
     {
       title: "‘욱씬욱씬 생리통’ 가만히 둬도 괜찮을까?",
       summary: "손락훈",
-      date: "2023-10-29",
+      date: "2023-05-24",
       image: "imgs/News2.png",
       popularity: "80",
     },
     {
       title: "피임약: 피임약의 이상한 진실",
       summary: "Zaria Gorvett",
-      date: "2023-10-29",
+      date: "2018-09-02",
       image: "imgs/News3.png",
       popularity: "100",
     },
-
-    // 추가 데이터 여따가
   ];
+  const [sortBy, setSortBy] = useState("popular"); // 'popular'이 기본 정렬
 
+  const handleSort = (sortType) => {
+    setSortBy(sortType);
+  };
+  const sortedByDate = [...newsData].sort((a, b) => {
+    return new Date(b.date) - new Date(a.date);
+  });
   const { id } = useParams();
 
   console.log(id);
-
   return (
     <Container>
       <Navigator1 />
       <NavigatorMain />
       <LittleNav>
         <div style={{ display: "flex" }}>
-          <OrderBtn>최신순</OrderBtn>
+          <OrderBtn onClick={() => handleSort("date")}>최신순</OrderBtn>
           <div> | </div>
-          <OrderBtn>인기순</OrderBtn>
+          <OrderBtn onClick={() => handleSort("popular")}>인기순</OrderBtn>
         </div>
       </LittleNav>
       <Main>
         <Sector>
-          {newsData.map((news, index) => (
+          {sortBy === "popular" && newsData.map((news, index) => (
             <ImgBox>
               <Link to={`/news/${index + 1}`} key={index}>
-                <img src={process.env.PUBLIC_URL + news.image} alt="img" />
+                <img src={news.image} alt="img" />
+              </Link>
+
+              <div className="divSector">
+                <div style={{ fontSize: "33px" }}>{news.title}</div>
+                <div style={{ fontSize: "24px", marginTop: "9px" }}>
+                  {news.summary}
+                </div>
+                <div style={{ fontSize: "18px", marginTop: "9px" }}>
+                  {news.date}
+                </div>
+              </div>
+            </ImgBox>
+          ))}
+          {sortBy === "date" && sortedByDate.map((news, index) => (
+            <ImgBox>
+              <Link to={`/news/${index + 1}`} key={index}>
+                <img src={news.image} alt="img" />
               </Link>
 
               <div className="divSector">
