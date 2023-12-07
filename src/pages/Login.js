@@ -131,7 +131,7 @@ export default function Login() {
     // 로그아웃 버튼을 누르면 실행되는 함수
     removeCookie("access_token"); // 쿠키삭제후
     removeCookie("JSESSIONID");
-
+    window.location.href = "/"; // 현재url을 변경해준다.
   };
   return (
     <div>
