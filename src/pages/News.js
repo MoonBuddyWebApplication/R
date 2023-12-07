@@ -94,7 +94,7 @@ export default function News() {
           {newsData.map((news, index) => (
             <ImgBox>
               <Link to={`/news/${index + 1}`} key={index}>
-                <img src={process.env.PUBLIC_URL + news.image} alt="img" />
+                <img src={news.image} alt="img" />
               </Link>
 
               <div className="divSector">
