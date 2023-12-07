@@ -125,7 +125,7 @@ export default function Login() {
   const handlePwChange = (e) => {
     setUserPw(e.target.value);
   };
-  const [cookies, setCookie, removeCookie] = useCookies(["access_token"]);
+  const [, , removeCookie] = useCookies(["access_token"]);
 
   const handleLogout = () => {
     // 로그아웃 버튼을 누르면 실행되는 함수
@@ -133,6 +133,7 @@ export default function Login() {
     removeCookie("JSESSIONID");
     window.location.href = "/"; // 현재url을 변경해준다.
   };
+
   return (
     <div>
       <Navitgator1 />
