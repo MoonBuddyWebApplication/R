@@ -13,6 +13,9 @@ import CommunityMini from "./pages/CommunityMini";
 import NewsDetail from "./pages/NewsDetail";
 import ModifyMe from "./pages/ModifyMe";
 import ModifyRate from "./pages/ModifyRate";
+import axios from "axios";
+axios.defaults.baseURL = "https://api.domarketdodo.shop";
+axios.defaults.withCredentials = true;
 const router = createBrowserRouter([
   {
     path: "/",
@@ -51,7 +54,7 @@ const router = createBrowserRouter([
     element: <MyPage />,
   },
   {
-    path: "/comchat",
+    path: "/com/:boardId",
     element: <CommunityMini />,
   },
   {

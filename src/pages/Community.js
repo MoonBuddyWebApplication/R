@@ -63,11 +63,11 @@ export default function Community() {
         <div>{arrayLen}개의 게시물 </div>
       </LittleNav>
       <LinkDiv>
-        <Link to="/comchat">
-          {res?.data.map((idx) => (
+        {res?.data.map((idx, index) => (
+          <Link key={idx} to={`/com/${idx.boardId}`}>
             <ChatComponent props={idx} />
-          ))}
-        </Link>
+          </Link>
+        ))}
       </LinkDiv>
     </div>
   );

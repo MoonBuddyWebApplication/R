@@ -3,7 +3,6 @@ import styled from "styled-components";
 import NavigatorMain from "../components/Main-js/Navigator_main";
 import Navitgator1 from "../components/Main-js/Navitgator1";
 import { Link } from "react-router-dom";
-import { loginapi } from "../components/Api/api";
 import { useState } from "react";
 import axios from "axios";
 const IdandPwDiv = styled.div`
@@ -81,11 +80,24 @@ export default function Login() {
   axios.defaults.withCredentials = true;
   const Loginapi = () => {
     axios
-      .post("https://api.domarketdodo.shop/auth", {
-        username: userId,
-        password: userPw,
-      })
+      .post(
+        "https://api.domarketdodo.shop/auth",
+        {
+          username: userId,
+          password: userPw,
+        },
+        { withCredentials: true }
+      )
       .then((res) => {
+        const { accessToken } = res.data;
+
+        // API 요청하는 콜마다 헤더에 accessToken 담아 보내도록 설정
+        axios.defaults.headers.common[
+          "Authorization"
+        ] = `Bearer ${accessToken}`;
+
+        // accessToken을 localStorage, cookie 등에 저장하지 않는다!
+
         console.log("res", res);
       })
       .catch((error) => {
