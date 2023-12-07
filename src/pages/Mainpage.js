@@ -9,7 +9,6 @@ import Footer from "../components/Main-js/Footer";
 // import { GetData } from "../components/Api/api";
 import { logout } from "../components/Api/api";
 
-
 const Mainpage = () => {
   // GetData();
   // React.useEffect(() => {
@@ -27,6 +26,7 @@ const Mainpage = () => {
 
   //   fetchData();
   // }, []);
+
   return (
     <div style={{ width: "100%" }}>
       <Navitgator1 />
