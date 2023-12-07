@@ -12,6 +12,11 @@ export const boardGet = () => {
   //화살표 함수 공부 필요, promise 는 이제 쓰지 않는다, async await 공부 필요
   return api.get("/board/viewAll"); // api.get 자체가 동기코드
 };
+export const boardGetOne = (uri) => {
+  //화살표 함수 공부 필요, promise 는 이제 쓰지 않는다, async await 공부 필요
+  return api.get(`/board/view/${uri}`); // api.get 자체가 동기코드
+};
+
 export const Login = () => {
   //화살표 함수 공부 필요, promise 는 이제 쓰지 않는다, async await 공부 필요
   return api.post("/auth"); // api.get 자체가 동기코드
