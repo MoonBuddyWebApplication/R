@@ -129,8 +129,8 @@ export default function Login() {
 
   const handleLogout = () => {
     // 로그아웃 버튼을 누르면 실행되는 함수
-    removeCookie("access_token"); // 쿠키삭제후
-    removeCookie("JSESSIONID");
+    removeCookie("access_token", { domain: "domarketdodo.shop" });
+    removeCookie("JSESSIONID", { domain: "api.domarketdodo.shop" });
     window.location.href = "/"; // 현재url을 변경해준다.
   };
 
