@@ -124,12 +124,12 @@ export default function Login() {
   const handlePwChange = (e) => {
     setUserPw(e.target.value);
   };
-  const [cookies, setCookie, removeCookie] = useCookies(["access_token"]);
+  const [, , removeCookie] = useCookies(["access_token"]);
 
   const handleLogout = () => {
     // 로그아웃 버튼을 누르면 실행되는 함수
-    removeCookie("access_token"); // 쿠키삭제후
-    removeCookie("JSESSIONID");
+    removeCookie("access_token", { domain: "domarket.dodo.shop" });
+    removeCookie("JSESSIONID", { domain: "domarket.dodo.shop" });
   };
   return (
     <div>
