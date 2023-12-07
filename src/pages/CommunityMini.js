@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { boardGetOne } from "../components/Api/api";
 const Container = styled.div`
   width: 1300px;
   margin: auto;
@@ -96,9 +97,13 @@ const Sector = styled.div`
     margin: 10px 0; /* 원하는 간격으로 조절 */
   }
 `;
+
 export default function CommunityMini({}) {
   const [inputText, setText] = useState("");
   const [res, setRes] = useState();
+
+  const { boardId } = useParams(); // 보드 uri 가져오기
+
   const handleTextChange = (e) => {
     setText(e.target.value);
   };
@@ -108,16 +113,14 @@ export default function CommunityMini({}) {
   }, []);
 
   const getData = async () => {
-    const response = await boardGet();
+    const response = await boardGetOne(boardId);
     setRes(response);
     console.log(res);
   };
 
-  const firstData = res?.data[0];
   const Data = res?.data;
   console.log(Data);
 
-  const { boardId } = useParams(); // 보드 uri 가져오기
   const PostBtn = async () => {
     try {
       await axios.post("https://api.domarketdodo.shop/reply/post", {
@@ -139,24 +142,22 @@ export default function CommunityMini({}) {
       <NavigatorMain />
       <TitleCom>
         <div className="category">[자유]</div>
-        <div className="title">{firstData?.title}</div>
+        <div className="title">{Data?.title}</div>
 
         <div className="nickDiv">
-          <div>{firstData?.writer}</div>
-          <div>
-            {new Date(firstData?.replyList[0].createdDate).toLocaleString()}
-          </div>
+          <div>{Data?.writer}</div>
+          <div>{new Date(Data?.createdDate).toLocaleString()}</div>
         </div>
       </TitleCom>
       <Sector>
         <hr />
-        <div className="sector">{firstData?.content}</div>
+        <div className="sector">{Data?.content}</div>
         <hr />
       </Sector>
 
       {Data && (
         <div>
-          {Data[0].replyList.map((varId) => (
+          {Data.replyList.map((varId) => (
             <div className="replyGet" key={varId.boardId}>
               <div className="nickGet">{varId?.nickname}</div>
               <div>{varId?.comment}</div>

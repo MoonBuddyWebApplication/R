@@ -14,6 +14,7 @@ import NewsDetail from "./pages/NewsDetail";
 import ModifyMe from "./pages/ModifyMe";
 import ModifyRate from "./pages/ModifyRate";
 import axios from "axios";
+import Write from "./pages/Write";
 axios.defaults.baseURL = "https://api.domarketdodo.shop";
 axios.defaults.withCredentials = true;
 const router = createBrowserRouter([
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
   {
     path: "/modifyrate",
     element: <ModifyRate />,
+  },
+  {
+    path: "/write",
+    element: <Write />,
   },
 ]);
 
