@@ -48,6 +48,7 @@ export default function NewsDetail() {
   const newsData = [
     {
       id: 1,
+      date: "2019-05-28",
       title: "세계 월경의 날: 월경에 대한 5가지 오해",
       content:
         "5월 28일은 세계 월경의 날로 여성의 월경이 평균 5일간 지속하고 28일을 주기로 돌아온다는 의미가 담긴 날이다. 2014년에 독일에서 처음 제정된 월경의 날은 그동안 월경에 대해 말조차 꺼내기 힘들었던 분위기를 깨고 존중하는 공감대를 형성해보자는 취지로 만들어졌다. 월경에 대한 인식이 많이 개선됐지만, 여전히 한국 사회에서 월경을 월경이라라고 부르기가 쉽지만은 않다.",
@@ -61,6 +62,7 @@ export default function NewsDetail() {
     },
     {
       id: 2,
+      date: "2023-05-24",
       title: "‘욱씬욱씬 생리통’ 가만히 둬도 괜찮을까?",
       content: `오는 5월 28일은 '세계 월경의 날'로 2013년 독일의 비영리단체 '워시 유나이티드(WASH United)'가 월경에 대한 인식을 개선하기 위해 지정한 기념일이다. 
 숫자 5와 28은 여성의 월경이 평균 '5일'간 지속되고 '28일' 간격으로 돌아온다는 의미가 담겨 있다. 월경은 마법, 매직, 마술로 표현되는 여성의 생리현상이지만, 욱씬한 고통에 남모를 고충을 앓고 있는 사람들이 많다.`,
@@ -74,6 +76,7 @@ export default function NewsDetail() {
     },
     {
       id: 3,
+      date: "2018-09-02",
       title: "피임약 : 피임약의 이상한 진실",
       content: `최근 과학자들은 피임약을 먹은 여성의 뇌가 근본적으로 다르게 보인다는 것을 깨닫기 시작했다. 호르몬을 투약하지 않은 여성과 비교했을 때 뇌의 몇몇 구역이 보다 '남성적'으로 보였다.
 
@@ -111,7 +114,7 @@ export default function NewsDetail() {
       <Container>
         <div className="firstSector">
           <div className="title">{selectedNews.title}</div>
-          <div className="date">{date}</div>
+          <div className="date">{selectedNews.date}</div>
         </div>
         <hr />
         <div className="middleSector">
