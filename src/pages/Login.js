@@ -5,6 +5,7 @@ import Navitgator1 from "../components/Main-js/Navitgator1";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import { useCookies } from "react-cookie";
 const IdandPwDiv = styled.div`
   @import url("https://fonts.googleapis.com/css2?family=Aoboshi+One&family=Gugi&family=Noto+Serif+KR:wght@200&display=swap");
   font-family: "Aoboshi One", serif;
@@ -75,6 +76,17 @@ const Finder = styled.div`
     color: #998ff3;
   }
 `;
+const LogOutBtn = styled.button`
+  background-color: #998ff8;
+  border-radius: 10px;
+  border: none;
+  width: 407px;
+  height: 83px;
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
+  box-shadow: 2px 2px 2px 2px #c1c0fa;
+`;
 
 export default function Login() {
   axios.defaults.withCredentials = true;
@@ -112,6 +124,13 @@ export default function Login() {
   const [userPw, setUserPw] = useState("");
   const handlePwChange = (e) => {
     setUserPw(e.target.value);
+  };
+  const COOKIE_KEY = window.LOGIN_KEY;
+  const [, , removeCookie] = useCookies([COOKIE_KEY]);
+  const handleLogout = () => {
+    // 로그아웃 버튼을 누르면 실행되는 함수
+    removeCookie(COOKIE_KEY, { path: "/" }); // 쿠키삭제후
+    window.location.href = "/"; // 현재url을 변경해준다.
   };
   return (
     <div>
@@ -160,6 +179,7 @@ export default function Login() {
           }}
         >
           <LoginBtn onClick={Loginapi}>로그인</LoginBtn>
+          <LogOutBtn onClick={handleLogout}>로그아웃</LogOutBtn>
         </div>
       </IdandPwDiv>
     </div>
