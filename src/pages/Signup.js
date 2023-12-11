@@ -200,6 +200,7 @@ export default function Signup() {
       })
       .then((res) => {
         console.log("res", res);
+        alert("회원가입에 성공하셨습니다.");
       })
       .catch((error) => {
         console.error("Error:", error.response.data.message);

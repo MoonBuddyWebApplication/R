@@ -111,6 +111,7 @@ export default function Login() {
         // accessToken을 localStorage, cookie 등에 저장하지 않는다!
 
         console.log("res", res);
+        window.location.href = "/";
       })
       .catch((error) => {
         console.error("Error:", error.response.data.message);
@@ -126,13 +127,6 @@ export default function Login() {
     setUserPw(e.target.value);
   };
   const [, , removeCookie] = useCookies(["access_token"]);
-
-  const handleLogout = () => {
-    // 로그아웃 버튼을 누르면 실행되는 함수
-    removeCookie("access_token", { domain: "domarketdodo.shop" });
-    removeCookie("JSESSIONID", { domain: "api.domarketdodo.shop" });
-    window.location.href = "/"; // 현재url을 변경해준다.
-  };
 
   return (
     <div>
@@ -177,7 +171,6 @@ export default function Login() {
           }}
         >
           <LoginBtn onClick={Loginapi}>로그인</LoginBtn>
-          <LogOutBtn onClick={handleLogout}>로그아웃</LogOutBtn>
         </div>
       </IdandPwDiv>
     </div>
