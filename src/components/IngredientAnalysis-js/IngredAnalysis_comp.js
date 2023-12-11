@@ -2,10 +2,7 @@ import { useState, useEffect } from 'react';
 import NavigatorMain from "../Main-js/Navigator_main";
 import Navitgator1 from "../Main-js/Navitgator1";
 import style from "../css/IngredientAnalysis.module.css";
-import style2 from "../css/ReviewComment.module.css";
-import { AiOutlineShareAlt } from "react-icons/ai";
 import { Modal, Box, Button, Typography } from '@mui/material';
-import ReviewComment from './ReviewComment';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -187,7 +184,6 @@ const IngredientAnalysis = () => {
                             <p className={style.name}><h3>{A.name}</h3></p>
                             <p className={style.price}>{A.product_price}원</p>
                         </div>
-                        <AiOutlineShareAlt size={25} />
                     </div>
                 </div >
                 <div className={style.RightArea_IngredientInfo}>
