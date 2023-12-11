@@ -141,7 +141,6 @@ export default function CommunityMini({}) {
     <Container>
       <NavigatorMain />
       <TitleCom>
-        <div className="category">[자유]</div>
         <div className="title">{Data?.title}</div>
 
         <div className="nickDiv">

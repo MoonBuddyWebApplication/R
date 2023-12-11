@@ -6,7 +6,7 @@ export default function ChatComponent({ props }) {
   const { content, title, writer, likes } = props;
   const Chat = styled.div`
     width: 1320px;
-    height: 240px;
+    height: 180px;
     border: solid 0.2em;
     border-radius: 10px;
     border-color: #3d008b;
@@ -27,10 +27,12 @@ export default function ChatComponent({ props }) {
   return (
     <Chat>
       <Topic>{content}</Topic>
-      <div style={{ fontSize: "36px", marginTop: "8px" }}>{title}</div>
+      {/* <div style={{ fontSize: "36px", marginTop: "8px" }}>{title}</div> */}
       <div style={{ marginTop: "4px" }}>{writer}</div>
       <div style={{ marginTop: "18px" }}>
-        {content !== null && <div style={{ marginTop: "4px" }}>{title}</div>}
+        {content !== null && (
+          <div style={{ marginTop: "4px", fontSize: "25px" }}>{title}</div>
+        )}
       </div>
       <div style={{ display: "flex", justifyContent: "flex-end" }}>
         <div style={{ marginRight: "5px" }}>
