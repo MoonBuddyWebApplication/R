@@ -168,10 +168,6 @@ export default function Login() {
             ></input>
             <div className="loginDiv">자동로그인</div>
           </div>
-          <Finder>
-            <Link to="/login">아이디 찾기 |</Link>
-            <Link to="/login"> 비밀번호 찾기</Link>
-          </Finder>
         </IdRem>
         <div
           style={{
