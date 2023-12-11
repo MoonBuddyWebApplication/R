@@ -6,6 +6,7 @@ import { useState } from "react";
 import AnalyzeGrid from "../components/Com-js/AnalyzeGrid";
 import { Link } from "react-router-dom";
 import { productGet } from "../components/Api/api";
+import Loading from "../components/Loading";
 
 export default function Analyze() {
   const Container = styled.div`
@@ -75,7 +76,7 @@ export default function Analyze() {
 
   const arrLen = 150;
   const [res, setRes] = useState([]);
-
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     getData();
   }, []);
@@ -104,6 +105,17 @@ export default function Analyze() {
   const productRelease = [...A].sort(
     (a, b) => parseInt(a.release_date) - parseInt(b.release_date)
   );
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+    return () => clearTimeout(timeoutId);
+  }, []);
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <div>

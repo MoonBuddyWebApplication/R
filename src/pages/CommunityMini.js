@@ -6,6 +6,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { boardGetOne } from "../components/Api/api";
+import Loading from "../components/Loading";
 const Container = styled.div`
   width: 1300px;
   margin: auto;
@@ -98,7 +99,8 @@ const Sector = styled.div`
   }
 `;
 
-export default function CommunityMini({}) {
+export default function CommunityMini({ }) {
+  const [loading, setLoading] = useState(true);
   const [inputText, setText] = useState("");
   const [res, setRes] = useState();
 
@@ -136,7 +138,16 @@ export default function CommunityMini({}) {
       console.error("Error:", error);
     }
   };
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setLoading(false);
+    }, 5000);
+    return () => clearTimeout(timeoutId);
+  }, []);
 
+  if (loading) {
+    return <Loading />;
+  }
   return (
     <Container>
       <NavigatorMain />
