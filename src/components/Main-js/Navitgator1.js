@@ -53,7 +53,7 @@ const Navigator1 = () => {
         // "access_token"이 비어있을 때에만 로그인 및 회원가입 링크 표시
         <>
           <Link to="/login">로그인 |</Link>
-          <Link to="/signup">회원가입 |</Link>
+          <Link to="/signup">회원가입 </Link>
         </>
       ) : (
         // "access_token"이 비어있지 않을 때 로그아웃 링크 표시

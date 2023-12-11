@@ -3,6 +3,7 @@ import Navitgator1 from "../components/Main-js/Navitgator1";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
+import axios from "axios";
 const Container = styled.div`
   @import url("https://fonts.googleapis.com/css2?family=Aoboshi+One&family=Gugi&family=Noto+Serif+KR:wght@200&display=swap");
   font-family: "Aoboshi One", serif;
@@ -78,6 +79,21 @@ export default function Write() {
   const handleContentChange = (e) => {
     setContent(e.target.value);
   };
+
+  const PostBtn = async () => {
+    try {
+      await axios.post("https://api.domarketdodo.shop/board/post", {
+        title: title,
+        content: content,
+      });
+
+      // 댓글이 등록된 후에 최신 데이터를 다시 가져옴
+
+      console.log("게시글이 등록되었습니다.");
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
   return (
     <div>
       <Navitgator1 />
@@ -109,7 +125,7 @@ export default function Write() {
         </div>
         <hr />
         <BtnDiv>
-          <LoginBtn>글 등록하기</LoginBtn>
+          <LoginBtn onClick={PostBtn}>글 등록하기</LoginBtn>
         </BtnDiv>
       </Container>
     </div>
