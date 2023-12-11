@@ -146,7 +146,7 @@ export default function Login() {
         <div className="pw">비밀번호</div>
         <IdandPwInput>
           <input
-            type="text"
+            type="password"
             placeholder="비밀번호를 입력하세요"
             value={userPw}
             onChange={handlePwChange}
