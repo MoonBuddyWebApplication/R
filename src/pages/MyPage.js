@@ -4,6 +4,7 @@ import Navitgator1 from "../components/Main-js/Navitgator1";
 import { CgProfile, CgHeart, CgPen } from "react-icons/cg";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { mypage } from "../components/Api/api";
 const MyPage = () => {
   const StyledDiv = styled.div`
     @import url("https://fonts.googleapis.com/css2?family=Aoboshi+One&family=Gugi&family=Noto+Serif+KR:wght@200&display=swap");
@@ -47,6 +48,19 @@ const MyPage = () => {
       flex-direction: column;
     }
   `;
+  const [user, setUser] = React.useState([]);
+  React.useEffect(() => {
+    getData();
+  }, []);
+
+
+  const getData = async () => {
+    // axios.defaults.withCredentials = true;
+    const response = await mypage();
+    setUser(response);
+  };
+  console.log(user?.data); //옵셔널 체이닝
+  const U = user?.data || [];
   return (
     <div>
       <Navitgator1 />
@@ -59,9 +73,9 @@ const MyPage = () => {
           </div>
           <div className="rightArea">
             <div>
-              <h1 style={{ fontSize: "40px" }}>닉네임</h1>
-              <h2 style={{ fontSize: "24px" }}>아이디</h2>
-              <h2 style={{ fontSize: "24px" }}>이름</h2>
+              <h1 style={{ fontSize: "40px" }}>{U.nickName}</h1>
+              <h2 style={{ fontSize: "24px" }}>{U.userId}</h2>
+              {/* <h2 style={{ fontSize: "24px" }}>{U.username}</h2> */}
             </div>
             <div className="btnArea">
               <Link to="/modifyme">
