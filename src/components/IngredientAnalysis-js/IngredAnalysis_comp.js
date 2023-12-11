@@ -12,6 +12,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { product_id } from "../Api/api";
 import axios from "axios";
 import styled from "styled-components";
+import Loading from "../Loading";
 
 // import axios from 'axios';
 import { useParams } from "react-router-dom";
@@ -115,7 +116,7 @@ const IngrediList = ({ ingredients, handleOpen }) => {
 };
 
 const IngredientAnalysis = () => {
-  // axios.defaults.withCredentials = true;
+  const [loading, setLoading] = useState(true);
   const [openModal, setOpenModal] = useState(false);
   const [currentModalIndex, setCurrentModalIndex] = useState(0);
 
@@ -175,6 +176,16 @@ const IngredientAnalysis = () => {
     }
   };
 
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setLoading(false);
+    }, 5000);
+    return () => clearTimeout(timeoutId);
+  }, []);
+
+  if (loading) {
+    return <Loading />;
+  }
   return (
     <div>
       <Navitgator1 />

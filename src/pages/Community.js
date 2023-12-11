@@ -5,6 +5,7 @@ import { boardGet } from "../components/Api/api";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Navigator1 from "../components/Main-js/Navitgator1";
+import Loading from "../components/Loading";
 
 const LittleNav = styled.div`
   @import url("https://fonts.googleapis.com/css2?family=Aoboshi+One&family=Gugi&family=Noto+Serif+KR:wght@200&display=swap");
@@ -57,6 +58,7 @@ const LoginBtn = styled.button`
 
 export default function Community() {
   const [res, setRes] = useState();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getData();
@@ -74,6 +76,17 @@ export default function Community() {
   //   <div>{titleDiv.title}</div>;
   // });
   const arrayLen = res?.data.length;
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+    return () => clearTimeout(timeoutId);
+  }, []);
+
+  if (loading) {
+    return <Loading />;
+  }
   return (
     <div>
       <Navigator1 />
