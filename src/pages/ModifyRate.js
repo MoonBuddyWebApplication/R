@@ -213,7 +213,7 @@ export default function ModifyRate() {
         <div>
           <div className={"join"}>문버디스코어 수정</div>
 
-          <div className="explain">100점 만점으로 입력해주세요 </div>
+          <div className="explain">총합 100점 만점으로 입력해주세요 </div>
           <div className={"joinCompo"}>
             <div className={"weightBowl"}>
               <div className="bowl">

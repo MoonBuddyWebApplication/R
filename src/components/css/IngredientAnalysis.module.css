@@ -1,121 +1,123 @@
 @import url("https://fonts.googleapis.com/css2?family=Aoboshi+One&family=Gugi&family=Noto+Serif+KR:wght@200&display=swap");
 
 .container {
-    display: flex;
-    justify-content: space-evenly;
-    font-family: "Aoboshi One", serif;
-    font-family: "Gugi", cursive;
-    font-family: "Noto Serif KR", serif;
+  display: flex;
+  justify-content: space-evenly;
+  font-family: "Aoboshi One", serif;
+  font-family: "Gugi", cursive;
+  font-family: "Noto Serif KR", serif;
 }
 
 .LeftBotton {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .LeftBotton p,
 h3 {
-    margin: 0;
-    margin-bottom: 4%;
+  margin: 0;
+  margin-bottom: 4%;
 }
 
 /* section1 관련 */
 .Section1 {
-    display: flex;
-    align-items: center;
-
+  display: flex;
+  align-items: center;
 }
 
 .Section1 .title {
-    display: flex;
-    font-size: 32px;
+  display: flex;
+  font-size: 32px;
 }
 
 .brand {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 .name {
-    font-size: 36px;
+  font-size: 36px;
 }
 
 .price {
-    font-size: 30px;
+  font-size: 30px;
 }
 
 .real_moonscore {
-    color: #330075;
-    font-weight: bold;
+  color: #330075;
+  font-weight: bold;
 }
 
 /* section2 관련 */
 .Section2 {
-    width: 590px;
-    height: 348px;
-    border-bottom: 3px solid;
+  width: 590px;
+  height: 348px;
+  border-bottom: 3px solid;
 }
 
 .Section2 .title {
-    display: flex;
-    align-items: baseline;
-    border-bottom: 3px solid;
+  display: flex;
+  align-items: baseline;
+  border-bottom: 3px solid;
 }
 
 .Section2 h4 {
-    margin: 0;
-    font-size: 32px;
-    margin-right: 2%;
+  margin: 0;
+  font-size: 32px;
+  margin-right: 2%;
 }
 
 .ListContainer {
-    height: 310px;
-    overflow-y: auto;
+  height: 310px;
+  overflow-y: auto;
 }
-
+.ListContainer::-webkit-scrollbar {
+  display: none;
+}
 .btn_Ingredi {
-    width: 590px;
-    cursor: pointer;
-    font-size: 20px;
-    border: 0;
-    background-color: transparent;
-    margin-top: 10px;
-    margin-bottom: 10px;
+  width: 590px;
+  cursor: pointer;
+  font-size: 20px;
+  border: 0;
+  background-color: transparent;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 /* section3 관련 */
 .Section3 {
-    font-size: 14px;
+  font-size: 14px;
+  margin-top: 20px;
 }
 
 .Section3 .title {
-    display: flex;
-    align-items: baseline;
-    margin-bottom: 20px;
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 20px;
 }
 
 .Section3 h4 {
-    margin: 0;
-    font-size: 32px;
-    margin-right: 2%;
+  margin: 0;
+  font-size: 32px;
+  margin-right: 2%;
 }
 
 .BottomArea_FeatureAndReivew {
-    margin-top: 62px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  margin-top: 62px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .Tabs {
-    width: 100%;
-    margin-bottom: 10px;
+  width: 100%;
+  margin-bottom: 10px;
 }
 
-.Tabs>li>button {
-    color: #6E00FD;
-    font-size: 40px;
+.Tabs > li > button {
+  color: #6e00fd;
+  font-size: 40px;
 }
 
-.Tabs>li>button:hover {
-    background-color: #b6a3e390;
+.Tabs > li > button:hover {
+  background-color: #b6a3e390;
 }
