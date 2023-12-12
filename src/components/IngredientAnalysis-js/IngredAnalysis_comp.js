@@ -13,7 +13,8 @@ import { product_id } from "../Api/api";
 import axios from "axios";
 import styled from "styled-components";
 import Loading from "../Loading";
-
+import { mypage } from "../Api/api";
+import React from "react";
 // import axios from 'axios';
 import { useParams } from "react-router-dom";
 axios.defaults.withCredentials = true;
@@ -77,6 +78,7 @@ const StyledDiv = styled.div`
     font-size: 18px;
   }
 `;
+
 const ModalComponent = ({ data, open, onClose }) => {
   return (
     <>
@@ -147,11 +149,21 @@ const IngredientAnalysis = () => {
   const handleTextChange = (e) => {
     setText(e.target.value);
   };
+  const [user, setUser] = useState([]);
+
+  useEffect(() => {
+    getData2();
+  }, []);
 
   useEffect(() => {
     getData();
   }, []);
 
+  const getData2 = async () => {
+    // axios.defaults.withCredentials = true;
+    const response = await mypage();
+    setUser(response);
+  };
   const getData = async () => {
     // axios.defaults.withCredentials = true;
     const response = await product_id(detail);
@@ -297,7 +309,7 @@ const IngredientAnalysis = () => {
                 </div>
               ))}
               <div className="replyInput">
-                <div className="nick">유저 닉네임</div>
+                <div className="nick">{user?.nickName}</div>
                 <input
                   type="text"
                   placeholder="댓글을 입력해주세요"

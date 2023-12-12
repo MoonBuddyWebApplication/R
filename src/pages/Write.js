@@ -4,6 +4,8 @@ import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import { useEffect } from "react";
+import { mypage } from "../components/Api/api";
 const Container = styled.div`
   @import url("https://fonts.googleapis.com/css2?family=Aoboshi+One&family=Gugi&family=Noto+Serif+KR:wght@200&display=swap");
   font-family: "Aoboshi One", serif;
@@ -79,7 +81,16 @@ export default function Write() {
   const handleContentChange = (e) => {
     setContent(e.target.value);
   };
+  const [user, setUser] = useState([]);
+  useEffect(() => {
+    getData();
+  }, []);
 
+  const getData = async () => {
+    // axios.defaults.withCredentials = true;
+    const response = await mypage();
+    setUser(response);
+  };
   const PostBtn = async () => {
     try {
       await axios.post("https://api.domarketdodo.shop/board/post", {
@@ -90,6 +101,7 @@ export default function Write() {
       // 댓글이 등록된 후에 최신 데이터를 다시 가져옴
 
       console.log("게시글이 등록되었습니다.");
+      window.location.href = "/com";
     } catch (error) {
       console.error("Error:", error);
     }
@@ -107,7 +119,7 @@ export default function Write() {
               value={title}
               onChange={handleTitleChange}
             ></input>
-            <div className="user">유저 닉네임</div>
+            <div className="user">{user?.nickName}</div>
           </div>
 
           <div className="date">{date}</div>
