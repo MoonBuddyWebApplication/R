@@ -106,6 +106,9 @@ export default function Write() {
       console.error("Error:", error);
     }
   };
+
+  console.log(user);
+  console.log(user?.data.nickName);
   return (
     <div>
       <Navitgator1 />
@@ -119,7 +122,7 @@ export default function Write() {
               value={title}
               onChange={handleTitleChange}
             ></input>
-            <div className="user">{user?.nickName}</div>
+            <div className="user">{user?.data.nickName}</div>
           </div>
 
           <div className="date">{date}</div>

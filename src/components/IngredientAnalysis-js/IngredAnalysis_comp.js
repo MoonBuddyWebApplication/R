@@ -309,7 +309,7 @@ const IngredientAnalysis = () => {
                 </div>
               ))}
               <div className="replyInput">
-                <div className="nick">{user?.nickName}</div>
+                <div className="nick">{user?.data.nickName}</div>
                 <input
                   type="text"
                   placeholder="댓글을 입력해주세요"

@@ -2,8 +2,9 @@ import styled from "styled-components";
 
 export default function ChatComponent({ props }) {
   const goodLen = 15;
-  const comLen = 3;
-  const { content, title, writer, likes } = props;
+
+  const { content, title, writer, likes, replyList } = props;
+  const comLen = replyList.length;
   const Chat = styled.div`
     width: 1320px;
     height: 180px;
