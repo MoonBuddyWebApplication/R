@@ -99,7 +99,7 @@ const Sector = styled.div`
   }
 `;
 
-export default function CommunityMini({}) {
+export default function CommunityMini({ }) {
   const [loading, setLoading] = useState(true);
   const [inputText, setText] = useState("");
   const [res, setRes] = useState();
@@ -179,7 +179,7 @@ export default function CommunityMini({}) {
 
       <hr />
       <div className="replyInput">
-        <div className="nick">{Data?.nickName}</div>
+        <div className="nick">{Data?.nickname}</div>
         <input
           type="text"
           placeholder="댓글을 입력해주세요"
